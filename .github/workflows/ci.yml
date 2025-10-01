@@ -1,0 +1,16 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check links in Markdown
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: --verbose --no-progress --max-redirects 4 --include "**/*.md" --accept 200,429
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
