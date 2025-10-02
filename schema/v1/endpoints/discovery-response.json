@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/discovery-response.json",
+  "title": "RDCP Discovery Response v1.0",
+  "description": "Response schema for GET /rdcp/v1/discovery endpoint",
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "$ref": "../common/rdcp-common.json#/$defs/protocolVersion"
+    },
+    "timestamp": {
+      "$ref": "../common/rdcp-common.json#/$defs/timestamp"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "$ref": "../common/rdcp-common.json#/$defs/categoryName"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable category description"
+          },
+          "enabled": {
+            "type": "boolean",
+            "description": "Whether the category is currently enabled"
+          },
+          "temporary": {
+            "type": "boolean",
+            "description": "Whether the current state is temporary"
+          },
+          "metrics": {
+            "$ref": "../common/rdcp-common.json#/$defs/metrics"
+          }
+        },
+        "required": ["name", "description", "enabled", "temporary"],
+        "additionalProperties": false
+      },
+      "description": "Available debug categories"
+    },
+    "performance": {
+      "type": "object",
+      "properties": {
+        "totalCalls": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total debug calls across all categories"
+        },
+        "callsPerSecond": {
+          "type": "number", 
+          "minimum": 0,
+          "description": "Average calls per second across all categories"
+        },
+        "categoryBreakdown": {
+          "type": "object",
+          "patternProperties": {
+            "^[A-Z][A-Z0-9_]*$": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "additionalProperties": false,
+          "description": "Call counts by category"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Overall performance metrics"
+    },
+    "tenant": {
+      "$ref": "../common/rdcp-common.json#/$defs/tenantContext"
+    }
+  },
+  "required": ["protocol", "timestamp", "categories"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "protocol": "rdcp/1.0",
+      "timestamp": "2025-09-17T10:30:00Z",
+      "categories": [
+        {
+          "name": "DATABASE",
+          "description": "Database operations",
+          "enabled": true,
+          "temporary": false,
+          "metrics": {
+            "callsTotal": 1234,
+            "callsPerSecond": 2.3
+          }
+        }
+      ],
+      "performance": {
+        "totalCalls": 45678,
+        "callsPerSecond": 2.3,
+        "categoryBreakdown": {
+          "DATABASE": 1234
+        }
+      }
+    }
+  ]
+}

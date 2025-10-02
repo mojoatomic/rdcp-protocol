@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/control-response.json",
+  "title": "RDCP Control Response v1.0",
+  "description": "Response schema for POST /rdcp/v1/control endpoint",
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "$ref": "../common/rdcp-common.json#/$defs/protocolVersion"
+    },
+    "timestamp": {
+      "$ref": "../common/rdcp-common.json#/$defs/timestamp"
+    },
+    "action": {
+      "type": "string",
+      "enum": ["enable", "disable", "toggle", "reset", "status"],
+      "description": "Control action that was performed"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "$ref": "../common/rdcp-common.json#/$defs/categoryName"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Debug categories that were affected"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["success", "partial", "failed"],
+      "description": "Overall operation status"
+    },
+    "message": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable status message"
+    },
+    "changes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "$ref": "../common/rdcp-common.json#/$defs/categoryName"
+          },
+          "previousState": {
+            "type": "boolean",
+            "description": "Previous enabled/disabled state"
+          },
+          "newState": {
+            "type": "boolean",
+            "description": "New enabled/disabled state"
+          },
+          "temporary": {
+            "type": "boolean",
+            "description": "Whether this is a temporary change"
+          },
+          "effectiveAt": {
+            "$ref": "../common/rdcp-common.json#/$defs/timestamp"
+          },
+          "expiresAt": {
+            "$ref": "../common/rdcp-common.json#/$defs/timestamp"
+          }
+        },
+        "required": ["category", "previousState", "newState", "effectiveAt"],
+        "additionalProperties": false
+      },
+      "description": "Detailed changes made to each category"
+    },
+    "tenant": {
+      "$ref": "../common/rdcp-common.json#/$defs/tenantContext"
+    }
+  },
+  "required": ["protocol", "timestamp", "action", "categories", "status", "message"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "protocol": "rdcp/1.0",
+      "timestamp": "2025-09-17T10:30:00Z",
+      "action": "enable",
+      "categories": ["DATABASE"],
+      "status": "success",
+      "message": "Enabled categories",
+      "changes": [
+        {
+          "category": "DATABASE",
+          "previousState": false,
+          "newState": true,
+          "temporary": true,
+          "effectiveAt": "2025-09-17T10:30:00Z",
+          "expiresAt": "2025-09-17T10:45:00Z"
+        }
+      ]
+    }
+  ]
+}

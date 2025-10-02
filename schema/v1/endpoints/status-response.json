@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/status-response.json",
+  "title": "RDCP Status Response v1.0",
+  "description": "Response schema for GET /rdcp/v1/status endpoint", 
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "$ref": "../common/rdcp-common.json#/$defs/protocolVersion"
+    },
+    "timestamp": {
+      "$ref": "../common/rdcp-common.json#/$defs/timestamp"
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Whether debug system is globally enabled"
+    },
+    "categories": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Z][A-Z0-9_]*$": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Current enabled/disabled state of each category"
+    },
+    "performance": {
+      "$ref": "../common/rdcp-common.json#/$defs/metrics"
+    },
+    "tenant": {
+      "$ref": "../common/rdcp-common.json#/$defs/tenantContext"
+    }
+  },
+  "required": ["protocol", "timestamp", "enabled", "categories"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "protocol": "rdcp/1.0",
+      "timestamp": "2025-09-17T10:30:00Z", 
+      "enabled": true,
+      "categories": {
+        "DATABASE": true,
+        "API_ROUTES": false
+      },
+      "performance": {
+        "callsTotal": 45678,
+        "callsPerSecond": 2.3
+      }
+    }
+  ]
+}

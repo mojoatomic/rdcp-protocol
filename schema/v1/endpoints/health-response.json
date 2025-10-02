@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/health-response.json",
+  "title": "RDCP Health Response v1.0",
+  "description": "Response schema for GET /rdcp/v1/health endpoint",
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "$ref": "../common/rdcp-common.json#/$defs/protocolVersion"
+    },
+    "timestamp": {
+      "$ref": "../common/rdcp-common.json#/$defs/timestamp"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["healthy", "degraded", "unhealthy"],
+      "description": "Overall system health status"
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Name of the health check component"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pass", "fail", "warn"],
+            "description": "Component health status"
+          },
+          "duration": {
+            "type": "string",
+            "pattern": "^\\d+(\\.\\d+)?(ns|μs|ms|s)$",
+            "description": "Time taken for the health check"
+          }
+        },
+        "required": ["name", "status"],
+        "additionalProperties": false
+      },
+      "description": "Individual component health checks"
+    },
+    "tenant": {
+      "$ref": "../common/rdcp-common.json#/$defs/tenantContext"
+    }
+  },
+  "required": ["protocol", "timestamp", "status"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "protocol": "rdcp/1.0",
+      "timestamp": "2025-09-17T10:30:00Z",
+      "status": "healthy",
+      "checks": [
+        {
+          "name": "redis",
+          "status": "pass", 
+          "duration": "5ms"
+        },
+        {
+          "name": "db",
+          "status": "pass",
+          "duration": "8ms"
+        }
+      ]
+    }
+  ]
+}

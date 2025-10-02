@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/common/rdcp-common.json",
+  "title": "RDCP Protocol Common Definitions v1.0",
+  "description": "Common schema definitions for the Runtime Debug Control Protocol (RDCP) v1.0",
+  "$defs": {
+    "protocolVersion": {
+      "type": "string",
+      "const": "rdcp/1.0",
+      "description": "RDCP protocol version identifier"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp in UTC"
+    },
+    "categoryName": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]*$",
+      "minLength": 1,
+      "maxLength": 64,
+      "description": "Debug category name (uppercase, alphanumeric with underscores)"
+    },
+    "tenantContext": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique tenant identifier"
+        },
+        "isolationLevel": {
+          "type": "string",
+          "enum": ["global", "process", "namespace", "organization"],
+          "description": "Tenant isolation level"
+        },
+        "scope": {
+          "type": "string",
+          "enum": ["global", "tenant-isolated"],
+          "description": "Tenant scope indicator"
+        }
+      },
+      "required": ["id", "isolationLevel", "scope"],
+      "additionalProperties": false
+    },
+    "securityLevel": {
+      "type": "string",
+      "enum": ["basic", "standard", "enterprise"],
+      "description": "RDCP security implementation level"
+    },
+    "authMethod": {
+      "type": "string",
+      "enum": ["api-key", "bearer", "mtls", "hybrid"],
+      "description": "Authentication method identifier"
+    },
+    "httpStatusCode": {
+      "type": "integer",
+      "minimum": 100,
+      "maximum": 599,
+      "description": "HTTP status code"
+    },
+    "rdcpErrorCode": {
+      "type": "string",
+      "enum": [
+        "RDCP_AUDIT_WRITE_FAILED",
+        "RDCP_AUTH_REQUIRED", 
+        "RDCP_CATEGORY_NOT_FOUND",
+        "RDCP_CONFIGURATION_ERROR",
+        "RDCP_FORBIDDEN",
+        "RDCP_INTERNAL_ERROR",
+        "RDCP_INVALID_ACTION",
+        "RDCP_INVALID_CATEGORY",
+        "RDCP_INVALID_CLIENT",
+        "RDCP_INVALID_PROTOCOL",
+        "RDCP_INVALID_TOKEN",
+        "RDCP_MALFORMED_REQUEST",
+        "RDCP_MISSING_PARAMETER",
+        "RDCP_NOT_FOUND",
+        "RDCP_RATE_LIMITED",
+        "RDCP_RATE_LIMIT_MISCONFIGURED",
+        "RDCP_REQUEST_ID_INVALID",
+        "RDCP_SERVER_ERROR",
+        "RDCP_STORAGE_ERROR",
+        "RDCP_TIMEOUT",
+        "RDCP_TOKEN_EXPIRED",
+        "RDCP_UNAVAILABLE",
+        "RDCP_UNSUPPORTED_VERSION",
+        "RDCP_VALIDATION_ERROR"
+      ],
+      "description": "Standard RDCP error code"
+    },
+    "metrics": {
+      "type": "object",
+      "properties": {
+        "callsTotal": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of debug calls"
+        },
+        "callsPerSecond": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Average debug calls per second"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,156 @@
+name: Validate JSON Schemas
+on:
+  push:
+    paths:
+      - 'schema/**/*.json'
+      - '.github/workflows/validate-schemas.yml'
+  pull_request:
+    paths:
+      - 'schema/**/*.json'
+      - '.github/workflows/validate-schemas.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install ajv ajv-formats ajv-cli
+          
+      - name: Validate schema syntax
+        run: |
+          echo "🔍 Validating JSON Schema syntax and structure..."
+          find schema -name "*.json" -exec echo "Validating {}" \; -exec npx ajv compile -s {} \;
+          
+      - name: Test schema references
+        run: |
+          echo "🔗 Testing schema references and $ref integrity..."
+          # Test that all $ref references resolve correctly
+          node -e "
+            const Ajv = require('ajv');
+            const addFormats = require('ajv-formats');
+            const fs = require('fs');
+            const path = require('path');
+            
+            const ajv = new Ajv({
+              allErrors: true,
+              verbose: true,
+              strict: false,
+              loadSchema: async (uri) => {
+                console.log('Loading schema:', uri);
+                // Handle relative references
+                if (uri.startsWith('../')) {
+                  const schemaPath = path.resolve('schema/v1/endpoints', uri);
+                  return JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
+                }
+                // Handle absolute URLs (for our hosted schemas)
+                if (uri.startsWith('https://mojoatomic.github.io/rdcp-protocol/')) {
+                  const localPath = uri.replace('https://mojoatomic.github.io/rdcp-protocol/', '');
+                  return JSON.parse(fs.readFileSync(localPath, 'utf8'));
+                }
+                throw new Error(\`Cannot resolve schema: \${uri}\`);
+              }
+            });
+            
+            addFormats(ajv);
+            
+            async function validateSchemas() {
+              const schemaFiles = [
+                'schema/v1/common/rdcp-common.json',
+                'schema/v1/responses/error.json',
+                'schema/v1/endpoints/protocol-discovery.json',
+                'schema/v1/endpoints/control-request.json',
+                'schema/v1/endpoints/control-response.json',
+                'schema/v1/endpoints/discovery-response.json',
+                'schema/v1/endpoints/status-response.json',
+                'schema/v1/endpoints/health-response.json'
+              ];
+              
+              for (const file of schemaFiles) {
+                console.log(\`📋 Compiling schema: \${file}\`);
+                const schema = JSON.parse(fs.readFileSync(file, 'utf8'));
+                
+                try {
+                  await ajv.compileAsync(schema);
+                  console.log(\`✅ \${file} - Valid\`);
+                } catch (error) {
+                  console.error(\`❌ \${file} - Error: \${error.message}\`);
+                  process.exit(1);
+                }
+              }
+              
+              console.log('🎉 All schemas are valid!');
+            }
+            
+            validateSchemas().catch(console.error);
+          "
+          
+      - name: Validate example data against schemas
+        run: |
+          echo "📊 Validating example data against schemas..."
+          node -e "
+            const Ajv = require('ajv');
+            const addFormats = require('ajv-formats');
+            const fs = require('fs');
+            
+            const ajv = new Ajv({ allErrors: true });
+            addFormats(ajv);
+            
+            // Test examples in schemas
+            const testFiles = [
+              {
+                schema: 'schema/v1/responses/error.json',
+                name: 'Error Response'
+              },
+              {
+                schema: 'schema/v1/endpoints/protocol-discovery.json', 
+                name: 'Protocol Discovery'
+              },
+              {
+                schema: 'schema/v1/endpoints/control-request.json',
+                name: 'Control Request'
+              }
+            ];
+            
+            for (const test of testFiles) {
+              const schemaData = JSON.parse(fs.readFileSync(test.schema, 'utf8'));
+              
+              if (schemaData.examples) {
+                console.log(\`🧪 Testing examples in \${test.name}\`);
+                const validate = ajv.compile(schemaData);
+                
+                schemaData.examples.forEach((example, index) => {
+                  const valid = validate(example);
+                  if (valid) {
+                    console.log(\`  ✅ Example \${index + 1} - Valid\`);
+                  } else {
+                    console.error(\`  ❌ Example \${index + 1} - Invalid:\`);
+                    console.error(validate.errors);
+                    process.exit(1);
+                  }
+                });
+              }
+            }
+            
+            console.log('🎉 All examples validate successfully!');
+          "
+          
+      - name: Generate schema summary
+        run: |
+          echo "📈 Schema Summary:"
+          echo "=================="
+          find schema -name "*.json" | wc -l | xargs echo "Total schemas:"
+          echo ""
+          echo "Schema files by category:"
+          echo "- Common definitions: $(find schema/v1/common -name "*.json" | wc -l)"
+          echo "- Endpoint schemas: $(find schema/v1/endpoints -name "*.json" | wc -l)" 
+          echo "- Response schemas: $(find schema/v1/responses -name "*.json" | wc -l)"
+          echo ""
+          echo "All schemas validated successfully! ✅"

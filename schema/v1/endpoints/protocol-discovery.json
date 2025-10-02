@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/protocol-discovery.json",
+  "title": "RDCP Protocol Discovery Response v1.0",
+  "description": "Response schema for GET /.well-known/rdcp endpoint",
+  "type": "object",
+  "properties": {
+    "protocol": {
+      "$ref": "../common/rdcp-common.json#/$defs/protocolVersion"
+    },
+    "endpoints": {
+      "type": "object",
+      "properties": {
+        "discovery": {
+          "type": "string",
+          "format": "uri-reference",
+          "description": "Debug system discovery endpoint path"
+        },
+        "control": {
+          "type": "string", 
+          "format": "uri-reference",
+          "description": "Runtime control endpoint path"
+        },
+        "status": {
+          "type": "string",
+          "format": "uri-reference", 
+          "description": "Status monitoring endpoint path"
+        },
+        "health": {
+          "type": "string",
+          "format": "uri-reference",
+          "description": "Health check endpoint path"
+        }
+      },
+      "required": ["discovery", "control", "status", "health"],
+      "additionalProperties": false
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "multiTenancy": {
+          "type": "boolean",
+          "description": "Whether multi-tenancy is supported"
+        },
+        "performanceMetrics": {
+          "type": "boolean",
+          "description": "Whether performance metrics are available"
+        },
+        "temporaryControls": {
+          "type": "boolean",
+          "description": "Whether temporary debug controls are supported"
+        },
+        "auditTrail": {
+          "type": "boolean",
+          "description": "Whether audit logging is available"
+        }
+      },
+      "required": ["multiTenancy", "performanceMetrics", "temporaryControls", "auditTrail"],
+      "additionalProperties": false
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "$ref": "../common/rdcp-common.json#/$defs/securityLevel"
+        },
+        "methods": {
+          "type": "array",
+          "items": {
+            "$ref": "../common/rdcp-common.json#/$defs/authMethod"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Supported authentication methods"
+        },
+        "scopes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["discovery", "status", "control", "admin"]
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Available permission scopes"
+        },
+        "required": {
+          "type": "boolean",
+          "description": "Whether authentication is required"
+        },
+        "keyRotation": {
+          "type": "boolean",
+          "description": "Whether key rotation is supported"
+        },
+        "tokenRefresh": {
+          "type": "boolean",
+          "description": "Whether token refresh is supported"
+        }
+      },
+      "required": ["level", "methods", "required"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["protocol", "endpoints", "capabilities", "security"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "protocol": "rdcp/1.0",
+      "endpoints": {
+        "discovery": "/rdcp/v1/discovery",
+        "control": "/rdcp/v1/control", 
+        "status": "/rdcp/v1/status",
+        "health": "/rdcp/v1/health"
+      },
+      "capabilities": {
+        "multiTenancy": true,
+        "performanceMetrics": true,
+        "temporaryControls": true,
+        "auditTrail": true
+      },
+      "security": {
+        "level": "standard",
+        "methods": ["bearer"],
+        "scopes": ["discovery", "status", "control"],
+        "required": true,
+        "keyRotation": false,
+        "tokenRefresh": true
+      }
+    }
+  ]
+}
