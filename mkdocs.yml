@@ -75,6 +75,16 @@ nav:
   - Home: index.md
   - Protocol Specification: rdcp-protocol-specification.md
   - Implementation Guide: rdcp-implementation-guide.md
-  - Protocol Schemas: protocol-schemas.md
+  - Schemas:
+    - Overview: schemas/index.md
+    - Common Types: schemas/common.md
+    - Endpoints:
+      - Control Request: schemas/endpoints/control-request.md
+      - Control Response: schemas/endpoints/control-response.md
+      - Discovery Response: schemas/endpoints/discovery-response.md
+      - Status Response: schemas/endpoints/status-response.md
+      - Health Response: schemas/endpoints/health-response.md
+    - Response Types:
+      - Error Response: schemas/responses/error.md
   - Error Codes: error-codes.md
   - Compliance Report: PROTOCOL-COMPLIANCE-REPORT.md
