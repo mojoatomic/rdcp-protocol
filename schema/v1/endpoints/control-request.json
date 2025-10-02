@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/control-request.json",
+  "title": "RDCP Control Request v1.0",
+  "description": "Request schema for POST /rdcp/v1/control endpoint",
+  "type": "object",
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": ["enable", "disable", "toggle", "reset", "status"],
+      "description": "Control action to perform on debug categories"
+    },
+    "categories": {
+      "oneOf": [
+        {
+          "$ref": "../common/rdcp-common.json#/$defs/categoryName"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "../common/rdcp-common.json#/$defs/categoryName"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      ],
+      "description": "Debug category name(s) to control"
+    },
+    "options": {
+      "type": "object",
+      "properties": {
+        "temporary": {
+          "type": "boolean",
+          "description": "Whether the control change is temporary"
+        },
+        "duration": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "description": "Duration in seconds"
+            },
+            {
+              "type": "string",
+              "pattern": "^\\d+[smhdw]$",
+              "description": "Duration string (e.g., '15m', '2h', '1d')"
+            }
+          ],
+          "description": "Duration for temporary controls"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500,
+          "description": "Reason for the control change (for audit trail)"
+        }
+      },
+      "additionalProperties": false,
+      "description": "Additional options for the control operation"
+    }
+  },
+  "required": ["action", "categories"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "action": "enable",
+      "categories": ["DATABASE", "API_ROUTES"],
+      "options": {
+        "temporary": true,
+        "duration": "15m",
+        "reason": "Investigating issue #1234"
+      }
+    },
+    {
+      "action": "disable", 
+      "categories": "DATABASE"
+    },
+    {
+      "action": "status",
+      "categories": ["DATABASE", "CACHE", "AUTH"]
+    }
+  ]
+}

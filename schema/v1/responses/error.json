@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/responses/error.json",
+  "title": "RDCP Error Response v1.0",
+  "description": "Standard error response format for RDCP protocol operations",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "$ref": "../common/rdcp-common.json#/$defs/rdcpErrorCode"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Human-readable error message"
+        },
+        "details": {
+          "type": "object",
+          "description": "Additional error context and details",
+          "additionalProperties": true
+        },
+        "protocol": {
+          "$ref": "../common/rdcp-common.json#/$defs/protocolVersion"
+        }
+      },
+      "required": ["code", "message", "protocol"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["error"],
+  "additionalProperties": false,
+  "examples": [
+    {
+      "error": {
+        "code": "RDCP_VALIDATION_ERROR",
+        "message": "Request validation failed",
+        "details": {
+          "field": "categories",
+          "reason": "Invalid category name format"
+        },
+        "protocol": "rdcp/1.0"
+      }
+    },
+    {
+      "error": {
+        "code": "RDCP_AUTH_REQUIRED",
+        "message": "Authentication required",
+        "protocol": "rdcp/1.0"
+      }
+    }
+  ]
+}
