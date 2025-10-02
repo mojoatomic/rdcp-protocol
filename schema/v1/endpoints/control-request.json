@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "https://json-schema.org/draft-07/schema",
   "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/control-request.json",
   "title": "RDCP Control Request v1.0",
   "description": "Request schema for POST /rdcp/v1/control endpoint",

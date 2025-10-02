@@ -1,5 +1,5 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "https://json-schema.org/draft-07/schema",
   "$id": "https://mojoatomic.github.io/rdcp-protocol/schema/v1/responses/error.json",
   "title": "RDCP Error Response v1.0",
   "description": "Standard error response format for RDCP protocol operations",
