@@ -24,4 +24,36 @@
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/rdcp-protocol-specification/</loc>
          <lastmod>2025-10-02</lastmod>
     </url>
+    <url>
+         <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/</loc>
+         <lastmod>2025-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/common/</loc>
+         <lastmod>2025-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/control-request/</loc>
+         <lastmod>2025-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/control-response/</loc>
+         <lastmod>2025-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/discovery-response/</loc>
+         <lastmod>2025-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/health-response/</loc>
+         <lastmod>2025-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/status-response/</loc>
+         <lastmod>2025-10-02</lastmod>
+    </url>
+    <url>
+         <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/responses/error/</loc>
+         <lastmod>2025-10-02</lastmod>
+    </url>
 </urlset>
