@@ -1,0 +1,42 @@
+name: Validate JSON Schemas
+on:
+  push:
+    paths:
+      - 'schema/**/*.json'
+      - '.github/workflows/validate-schemas.yml'
+      - 'scripts/validate-schemas.js'
+  pull_request:
+    paths:
+      - 'schema/**/*.json'
+      - '.github/workflows/validate-schemas.yml'
+      - 'scripts/validate-schemas.js'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm install ajv ajv-formats
+
+      - name: Validate schemas
+        run: |
+          echo "Validating JSON Schemas (draft-07)"
+          node scripts/validate-schemas.js
+
+      - name: Schema summary
+        run: |
+          echo "Schema Summary"
+          echo "=============="
+          find schema -name "*.json" | wc -l | xargs echo "Total schemas:"
+          echo "- Common definitions: $(find schema/v1/common -name "*.json" | wc -l)"
+          echo "- Endpoint schemas: $(find schema/v1/endpoints -name "*.json" | wc -l)"
+          echo "- Response schemas: $(find schema/v1/responses -name "*.json" | wc -l)"
+          echo "Validation completed"
