@@ -58,3 +58,23 @@ jobs:
         run: |
           mike deploy --push --update-aliases 1.0 latest
           mike set-default --push latest
+
+      - name: Add /api redirect to /latest/api/
+        run: |
+          git fetch origin gh-pages:gh-pages
+          git checkout gh-pages
+          mkdir -p api
+          cat > api/index.html <<'REDIR'
+          <!doctype html>
+          <html>
+            <head>
+              <meta http-equiv="refresh" content="0; url=../latest/api/" />
+              <link rel="canonical" href="../latest/api/" />
+              <meta name="robots" content="noindex" />
+            </head>
+            <body>Redirecting to latest API docs…</body>
+          </html>
+          REDIR
+          git add api/index.html
+          git commit -m 'chore(pages): add /api redirect to /latest/api/' || true
+          git push origin gh-pages
