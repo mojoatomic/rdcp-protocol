@@ -166,6 +166,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#abstract">
+<span class="md-ellipsis">
+      Abstract
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#1-protocol-overview">
 <span class="md-ellipsis">
       1. Protocol Overview
@@ -184,6 +191,13 @@
 <a class="md-nav__link" href="#12-conformance-requirements">
 <span class="md-ellipsis">
       1.2 Conformance Requirements
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-terminology">
+<span class="md-ellipsis">
+      1.3 Terminology
     </span>
 </a>
 </li>
@@ -469,30 +483,65 @@
 <nav aria-label="8. Security Considerations" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#81-transport-security">
+<a class="md-nav__link" href="#81-threat-model">
 <span class="md-ellipsis">
-      8.1 Transport Security
+      8.1 Threat Model
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#82-authentication">
+<a class="md-nav__link" href="#82-authentication-security">
 <span class="md-ellipsis">
-      8.2 Authentication
+      8.2 Authentication Security
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#83-rate-limiting">
+<a class="md-nav__link" href="#83-authorization-and-scopes">
 <span class="md-ellipsis">
-      8.3 Rate Limiting
+      8.3 Authorization and Scopes
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#84-audit-trail">
+<a class="md-nav__link" href="#84-transport-security">
 <span class="md-ellipsis">
-      8.4 Audit Trail
+      8.4 Transport Security
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#85-denial-of-service-protection">
+<span class="md-ellipsis">
+      8.5 Denial of Service Protection
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#86-replay-attack-prevention">
+<span class="md-ellipsis">
+      8.6 Replay Attack Prevention
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#87-audit-trail-security">
+<span class="md-ellipsis">
+      8.7 Audit Trail Security
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#88-privacy-considerations">
+<span class="md-ellipsis">
+      8.8 Privacy Considerations
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#89-multi-tenancy-security">
+<span class="md-ellipsis">
+      8.9 Multi-Tenancy Security
     </span>
 </a>
 </li>
@@ -500,24 +549,45 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#9-compatibility">
+<a class="md-nav__link" href="#9-iana-considerations">
 <span class="md-ellipsis">
-      9. Compatibility
+      9. IANA Considerations
     </span>
 </a>
-<nav aria-label="9. Compatibility" class="md-nav">
+<nav aria-label="9. IANA Considerations" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#91-version-negotiation">
+<a class="md-nav__link" href="#91-well-known-uri-registration">
 <span class="md-ellipsis">
-      9.1 Version Negotiation
+      9.1 Well-Known URI Registration
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#92-backward-compatibility">
+<a class="md-nav__link" href="#92-media-type-registration">
 <span class="md-ellipsis">
-      9.2 Backward Compatibility
+      9.2 Media Type Registration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#93-error-code-registry">
+<span class="md-ellipsis">
+      9.3 Error Code Registry
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#94-authentication-method-registry">
+<span class="md-ellipsis">
+      9.4 Authentication Method Registry
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#95-scope-registry">
+<span class="md-ellipsis">
+      9.5 Scope Registry
     </span>
 </a>
 </li>
@@ -525,24 +595,24 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#10-extensibility">
+<a class="md-nav__link" href="#10-compatibility">
 <span class="md-ellipsis">
-      10. Extensibility
+      10. Compatibility
     </span>
 </a>
-<nav aria-label="10. Extensibility" class="md-nav">
+<nav aria-label="10. Compatibility" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#101-custom-categories">
+<a class="md-nav__link" href="#101-version-negotiation">
 <span class="md-ellipsis">
-      10.1 Custom Categories
+      10.1 Version Negotiation
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#102-vendor-extensions">
+<a class="md-nav__link" href="#102-backward-compatibility">
 <span class="md-ellipsis">
-      10.2 Vendor Extensions
+      10.2 Backward Compatibility
     </span>
 </a>
 </li>
@@ -550,12 +620,37 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#11-compliance-levels">
+<a class="md-nav__link" href="#11-extensibility">
 <span class="md-ellipsis">
-      11. Compliance Levels
+      11. Extensibility
     </span>
 </a>
-<nav aria-label="11. Compliance Levels" class="md-nav">
+<nav aria-label="11. Extensibility" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-custom-categories">
+<span class="md-ellipsis">
+      11.1 Custom Categories
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-vendor-extensions">
+<span class="md-ellipsis">
+      11.2 Vendor Extensions
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-compliance-levels">
+<span class="md-ellipsis">
+      12. Compliance Levels
+    </span>
+</a>
+<nav aria-label="12. Compliance Levels" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#level-1-basic">
@@ -582,11 +677,29 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#12-references">
+<a class="md-nav__link" href="#13-references">
 <span class="md-ellipsis">
-      12. References
+      13. References
     </span>
 </a>
+<nav aria-label="13. References" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#131-normative-references">
+<span class="md-ellipsis">
+      13.1 Normative References
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#132-informative-references">
+<span class="md-ellipsis">
+      13.2 Informative References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#appendix-a-implementation-notes">
@@ -661,6 +774,34 @@
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-d-authors-addresses">
+<span class="md-ellipsis">
+      Appendix D: Authors' Addresses
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-e-acknowledgments">
+<span class="md-ellipsis">
+      Appendix E: Acknowledgments
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#status-of-this-memo-template">
+<span class="md-ellipsis">
+      Status of This Memo (Template)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#copyright-notice-template">
+<span class="md-ellipsis">
+      Copyright Notice (Template)
+    </span>
+</a>
 </li>
 </ul>
 </nav>
@@ -886,6 +1027,13 @@
     </label>
 <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
 <li class="md-nav__item">
+<a class="md-nav__link" href="#abstract">
+<span class="md-ellipsis">
+      Abstract
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#1-protocol-overview">
 <span class="md-ellipsis">
       1. Protocol Overview
@@ -904,6 +1052,13 @@
 <a class="md-nav__link" href="#12-conformance-requirements">
 <span class="md-ellipsis">
       1.2 Conformance Requirements
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#13-terminology">
+<span class="md-ellipsis">
+      1.3 Terminology
     </span>
 </a>
 </li>
@@ -1189,30 +1344,65 @@
 <nav aria-label="8. Security Considerations" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#81-transport-security">
+<a class="md-nav__link" href="#81-threat-model">
 <span class="md-ellipsis">
-      8.1 Transport Security
+      8.1 Threat Model
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#82-authentication">
+<a class="md-nav__link" href="#82-authentication-security">
 <span class="md-ellipsis">
-      8.2 Authentication
+      8.2 Authentication Security
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#83-rate-limiting">
+<a class="md-nav__link" href="#83-authorization-and-scopes">
 <span class="md-ellipsis">
-      8.3 Rate Limiting
+      8.3 Authorization and Scopes
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#84-audit-trail">
+<a class="md-nav__link" href="#84-transport-security">
 <span class="md-ellipsis">
-      8.4 Audit Trail
+      8.4 Transport Security
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#85-denial-of-service-protection">
+<span class="md-ellipsis">
+      8.5 Denial of Service Protection
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#86-replay-attack-prevention">
+<span class="md-ellipsis">
+      8.6 Replay Attack Prevention
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#87-audit-trail-security">
+<span class="md-ellipsis">
+      8.7 Audit Trail Security
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#88-privacy-considerations">
+<span class="md-ellipsis">
+      8.8 Privacy Considerations
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#89-multi-tenancy-security">
+<span class="md-ellipsis">
+      8.9 Multi-Tenancy Security
     </span>
 </a>
 </li>
@@ -1220,24 +1410,45 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#9-compatibility">
+<a class="md-nav__link" href="#9-iana-considerations">
 <span class="md-ellipsis">
-      9. Compatibility
+      9. IANA Considerations
     </span>
 </a>
-<nav aria-label="9. Compatibility" class="md-nav">
+<nav aria-label="9. IANA Considerations" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#91-version-negotiation">
+<a class="md-nav__link" href="#91-well-known-uri-registration">
 <span class="md-ellipsis">
-      9.1 Version Negotiation
+      9.1 Well-Known URI Registration
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#92-backward-compatibility">
+<a class="md-nav__link" href="#92-media-type-registration">
 <span class="md-ellipsis">
-      9.2 Backward Compatibility
+      9.2 Media Type Registration
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#93-error-code-registry">
+<span class="md-ellipsis">
+      9.3 Error Code Registry
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#94-authentication-method-registry">
+<span class="md-ellipsis">
+      9.4 Authentication Method Registry
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#95-scope-registry">
+<span class="md-ellipsis">
+      9.5 Scope Registry
     </span>
 </a>
 </li>
@@ -1245,24 +1456,24 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#10-extensibility">
+<a class="md-nav__link" href="#10-compatibility">
 <span class="md-ellipsis">
-      10. Extensibility
+      10. Compatibility
     </span>
 </a>
-<nav aria-label="10. Extensibility" class="md-nav">
+<nav aria-label="10. Compatibility" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
-<a class="md-nav__link" href="#101-custom-categories">
+<a class="md-nav__link" href="#101-version-negotiation">
 <span class="md-ellipsis">
-      10.1 Custom Categories
+      10.1 Version Negotiation
     </span>
 </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#102-vendor-extensions">
+<a class="md-nav__link" href="#102-backward-compatibility">
 <span class="md-ellipsis">
-      10.2 Vendor Extensions
+      10.2 Backward Compatibility
     </span>
 </a>
 </li>
@@ -1270,12 +1481,37 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#11-compliance-levels">
+<a class="md-nav__link" href="#11-extensibility">
 <span class="md-ellipsis">
-      11. Compliance Levels
+      11. Extensibility
     </span>
 </a>
-<nav aria-label="11. Compliance Levels" class="md-nav">
+<nav aria-label="11. Extensibility" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#111-custom-categories">
+<span class="md-ellipsis">
+      11.1 Custom Categories
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#112-vendor-extensions">
+<span class="md-ellipsis">
+      11.2 Vendor Extensions
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#12-compliance-levels">
+<span class="md-ellipsis">
+      12. Compliance Levels
+    </span>
+</a>
+<nav aria-label="12. Compliance Levels" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#level-1-basic">
@@ -1302,11 +1538,29 @@
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="#12-references">
+<a class="md-nav__link" href="#13-references">
 <span class="md-ellipsis">
-      12. References
+      13. References
     </span>
 </a>
+<nav aria-label="13. References" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#131-normative-references">
+<span class="md-ellipsis">
+      13.1 Normative References
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#132-informative-references">
+<span class="md-ellipsis">
+      13.2 Informative References
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#appendix-a-implementation-notes">
@@ -1382,6 +1636,34 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-d-authors-addresses">
+<span class="md-ellipsis">
+      Appendix D: Authors' Addresses
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#appendix-e-acknowledgments">
+<span class="md-ellipsis">
+      Appendix E: Acknowledgments
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#status-of-this-memo-template">
+<span class="md-ellipsis">
+      Status of This Memo (Template)
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#copyright-notice-template">
+<span class="md-ellipsis">
+      Copyright Notice (Template)
+    </span>
+</a>
+</li>
 </ul>
 </nav>
 </div>
@@ -1397,11 +1679,20 @@
 <strong>Date</strong>: 2025-09-17<br/>
 <strong>Purpose</strong>: Formal protocol specification for runtime debug control across distributed systems</p>
 <hr/>
+<h2 id="abstract">Abstract<a class="headerlink" href="#abstract" title="Permanent link">¶</a></h2>
+<p>The Runtime Debug Control Protocol (RDCP) is an HTTP-based protocol that enables dynamic control of debug logging in distributed systems without requiring application restarts or redeployment. RDCP provides standardized endpoints for discovering debug categories, enabling or disabling logging at runtime, monitoring system health, and tracking configuration changes through an audit trail. The protocol supports multiple security levels ranging from basic API key authentication for development environments to enterprise-grade mutual TLS for regulated industries. Multi-tenancy capabilities allow isolated configuration management across organizational boundaries. This specification defines the protocol architecture, message formats, authentication mechanisms, error handling, and compliance requirements for interoperable implementations across programming languages and platforms.</p>
 <h2 id="1-protocol-overview">1. Protocol Overview<a class="headerlink" href="#1-protocol-overview" title="Permanent link">¶</a></h2>
 <h3 id="11-scope">1.1 Scope<a class="headerlink" href="#11-scope" title="Permanent link">¶</a></h3>
 <p>RDCP defines a standardized HTTP-based protocol for controlling debug logging in distributed applications at runtime. This specification is language and framework agnostic.</p>
 <h3 id="12-conformance-requirements">1.2 Conformance Requirements<a class="headerlink" href="#12-conformance-requirements" title="Permanent link">¶</a></h3>
 <p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119.</p>
+<h3 id="13-terminology">1.3 Terminology<a class="headerlink" href="#13-terminology" title="Permanent link">¶</a></h3>
+<ul>
+<li>Debug Category: A named collection of debug instrumentation points that can be collectively enabled or disabled.</li>
+<li>Tenant: An isolated configuration context, typically representing an organization or customer in a multi-tenant system.</li>
+<li>Temporary Control: A time-limited debug configuration that automatically expires after a specified duration.</li>
+<li>Security Level: A tier of authentication and authorization requirements (basic, standard, or enterprise).</li>
+</ul>
 <hr/>
 <h2 id="2-protocol-architecture">2. Protocol Architecture<a class="headerlink" href="#2-protocol-architecture" title="Permanent link">¶</a></h2>
 <h3 id="21-transport">2.1 Transport<a class="headerlink" href="#21-transport" title="Permanent link">¶</a></h3>
@@ -1902,49 +2193,298 @@
 - Document in response that values are estimated</p>
 <hr/>
 <h2 id="8-security-considerations">8. Security Considerations<a class="headerlink" href="#8-security-considerations" title="Permanent link">¶</a></h2>
-<h3 id="81-transport-security">8.1 Transport Security<a class="headerlink" href="#81-transport-security" title="Permanent link">¶</a></h3>
-<ul>
-<li>Production deployments MUST use HTTPS</li>
-<li>Development MAY use HTTP on localhost only</li>
-</ul>
-<h3 id="82-authentication">8.2 Authentication<a class="headerlink" href="#82-authentication" title="Permanent link">¶</a></h3>
-<ul>
-<li>API keys MUST be at least 32 characters</li>
-<li>Tokens MUST use industry-standard formats (JWT, OAuth2)</li>
-<li>Authentication MUST use constant-time comparison</li>
-</ul>
-<h3 id="83-rate-limiting">8.3 Rate Limiting<a class="headerlink" href="#83-rate-limiting" title="Permanent link">¶</a></h3>
-<ul>
-<li>Implementations SHOULD implement rate limiting</li>
-<li>Control endpoints SHOULD limit to 60 requests/minute</li>
-<li>Status endpoints MAY allow higher rates</li>
-</ul>
-<h3 id="84-audit-trail">8.4 Audit Trail<a class="headerlink" href="#84-audit-trail" title="Permanent link">¶</a></h3>
-<p>When audit trail is enabled:
-- All control operations MUST be logged
-- Logs MUST include timestamp, operator, action, reason
-- Logs SHOULD be tamper-evident</p>
+<h3 id="81-threat-model">8.1 Threat Model<a class="headerlink" href="#81-threat-model" title="Permanent link">¶</a></h3>
+<p>RDCP controls application behavior and may expose sensitive diagnostic information. The following threats are considered:</p>
+<p>In Scope:
+- Unauthorized access to debug controls
+- Information disclosure through debug output
+- Denial of service through resource exhaustion
+- Privilege escalation through scope manipulation
+- Replay attacks using captured credentials
+- Audit trail tampering</p>
+<p>Out of Scope:
+- Protection of debug output after it leaves the application
+- Network-level attacks (assumed TLS/mTLS provides transport security)
+- Host-level compromise (operating system security)</p>
+<h3 id="82-authentication-security">8.2 Authentication Security<a class="headerlink" href="#82-authentication-security" title="Permanent link">¶</a></h3>
+<p>Credential Strength:
+ API keys MUST be cryptographically random with minimum entropy of 128 bits
+- Keys MUST be compared using constant-time comparison to prevent timing attacks
+- Bearer tokens MUST use industry-standard formats (JWT with HS256/RS256, OAuth2)
+- Token validation MUST verify signature, issuer, audience, and expiration</p>
+<p>Credential Storage:
+- Servers MUST NOT log credentials in plaintext
+- Clients SHOULD store credentials in secure storage (keychains, vaults)
+- API keys SHOULD be rotatable without service interruption</p>
+<h3 id="83-authorization-and-scopes">8.3 Authorization and Scopes<a class="headerlink" href="#83-authorization-and-scopes" title="Permanent link">¶</a></h3>
+<p>Principle of Least Privilege:
+- Clients SHOULD request minimum necessary scopes
+- Servers MUST validate scopes for each operation
+- Control operations MUST require explicit "control" scope
+- Status/discovery MAY use broader "discovery" scope</p>
+<p>Scope Validation:
+- Servers MUST reject operations when required scopes are absent
+- Scope elevation MUST NOT be possible through protocol manipulation
+- Multi-tenant systems MUST enforce tenant isolation in scope validation</p>
+<h3 id="84-transport-security">8.4 Transport Security<a class="headerlink" href="#84-transport-security" title="Permanent link">¶</a></h3>
+<p>TLS Requirements:
+- Production deployments MUST use TLS; TLS 1.3 is RECOMMENDED
+- TLS 1.2 MAY be used only where TLS 1.3 is unavailable
+- Development MAY use HTTP only on localhost (127.0.0.1/::1)
+- Servers SHOULD use HSTS headers to enforce HTTPS</p>
+<p>Certificate Validation:
+- Clients MUST validate server certificates
+- mTLS deployments MUST validate client certificates
+- Certificate pinning MAY be used for enhanced security
+- Self-signed certificates MUST NOT be used in production</p>
+<h3 id="85-denial-of-service-protection">8.5 Denial of Service Protection<a class="headerlink" href="#85-denial-of-service-protection" title="Permanent link">¶</a></h3>
+<p>Rate Limiting:
+- Control endpoints SHOULD limit requests to 60/minute per client
+- Status endpoints MAY allow higher rates (e.g., 600/minute)
+- Rate limits SHOULD be enforced per authenticated identity
+- 429 Too Many Requests response MUST include Retry-After header</p>
+<p>Resource Exhaustion:
+- Temporary controls MUST have maximum duration limits (24 hours RECOMMENDED)
+- Server SHOULD limit concurrent temporary controls per tenant
+- Discovery responses SHOULD limit category list size
+- Request timeouts SHOULD be enforced (30 seconds RECOMMENDED)</p>
+<h3 id="86-replay-attack-prevention">8.6 Replay Attack Prevention<a class="headerlink" href="#86-replay-attack-prevention" title="Permanent link">¶</a></h3>
+<p>Request Uniqueness:
+- Clients SHOULD include unique X-RDCP-Request-ID header
+- Servers MAY implement request deduplication (5-minute window RECOMMENDED)
+- Timestamp validation SHOULD reject requests with clock skew &gt;5 minutes
+- Nonces MAY be required for high-security deployments</p>
+<h3 id="87-audit-trail-security">8.7 Audit Trail Security<a class="headerlink" href="#87-audit-trail-security" title="Permanent link">¶</a></h3>
+<p>Tamper Evidence:
+- Audit logs SHOULD use append-only storage
+- Enterprise deployments SHOULD use cryptographic hashing (e.g., SHA-256)
+- Log entries SHOULD include previous entry hash for chain validation
+- External audit systems MAY be used for compliance requirements</p>
+<p>Audit Content:
+- Logs MUST include timestamp, authenticated identity, action, affected categories
+- Logs SHOULD include client IP address and user agent
+- Logs MUST NOT include credentials or sensitive payload data
+- Retention policies SHOULD align with compliance requirements (90 days minimum)</p>
+<h3 id="88-privacy-considerations">8.8 Privacy Considerations<a class="headerlink" href="#88-privacy-considerations" title="Permanent link">¶</a></h3>
+<p>Personal Information:
+- User identifiers in audit logs constitute PII under GDPR/CCPA
+- Implementations SHOULD provide audit log anonymization options
+- Debug output MAY contain sensitive data; access controls are essential
+- Multi-tenant systems MUST prevent cross-tenant information leakage</p>
+<p>Data Minimization:
+- Status endpoints SHOULD NOT expose internal system details unnecessarily
+- Error messages SHOULD NOT leak implementation details
+- Discovery responses SHOULD provide only essential category information</p>
+<h3 id="89-multi-tenancy-security">8.9 Multi-Tenancy Security<a class="headerlink" href="#89-multi-tenancy-security" title="Permanent link">¶</a></h3>
+<p>Tenant Isolation:
+- Tenant ID MUST be validated against authenticated identity
+- Cross-tenant operations MUST be explicitly denied
+- Tenant isolation MUST be enforced at the storage layer
+- Global operations (admin) MUST require elevated privileges</p>
+<p>Tenant Context Injection:
+- Servers MUST validate tenant headers match authentication context
+- Clients MUST NOT be able to impersonate other tenants
+- Tenant switching MUST require re-authentication</p>
 <hr/>
-<h2 id="9-compatibility">9. Compatibility<a class="headerlink" href="#9-compatibility" title="Permanent link">¶</a></h2>
-<h3 id="91-version-negotiation">9.1 Version Negotiation<a class="headerlink" href="#91-version-negotiation" title="Permanent link">¶</a></h3>
+<h2 id="9-iana-considerations">9. IANA Considerations<a class="headerlink" href="#9-iana-considerations" title="Permanent link">¶</a></h2>
+<h3 id="91-well-known-uri-registration">9.1 Well-Known URI Registration<a class="headerlink" href="#91-well-known-uri-registration" title="Permanent link">¶</a></h3>
+<p>This document registers the following well-known URI in the "Well-Known URIs" registry as defined by RFC 8615:</p>
+<ul>
+<li>URI suffix: rdcp</li>
+<li>Change controller: IETF</li>
+<li>Specification document: This document</li>
+<li>Status: permanent</li>
+<li>Related information: Used for RDCP protocol discovery. Returns JSON describing RDCP endpoints and capabilities.</li>
+</ul>
+<h3 id="92-media-type-registration">9.2 Media Type Registration<a class="headerlink" href="#92-media-type-registration" title="Permanent link">¶</a></h3>
+<p>Type name: application</p>
+<p>Subtype name: vnd.rdcp.v1+json</p>
+<p>Required parameters: None</p>
+<p>Optional parameters:
+- charset: MUST be UTF-8 if specified</p>
+<p>Encoding considerations: binary (JSON text in UTF-8)</p>
+<p>Security considerations: See Section 8 of this document</p>
+<p>Interoperability considerations: Follows JSON syntax (RFC 8259)</p>
+<p>Published specification: This document</p>
+<p>Applications that use this media type: Distributed systems using RDCP for debug control</p>
+<p>Fragment identifier considerations: None</p>
+<p>Additional information:
+- Magic number(s): None
+- File extension(s): .json
+- Macintosh file type code(s): TEXT</p>
+<p>Person &amp; email address to contact: [Your Name] <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+<p>Intended usage: COMMON</p>
+<p>Restrictions on usage: None</p>
+<p>Author: [Your Name]</p>
+<p>Change controller: IETF</p>
+<h3 id="93-error-code-registry">9.3 Error Code Registry<a class="headerlink" href="#93-error-code-registry" title="Permanent link">¶</a></h3>
+<p>IANA is requested to create and maintain a registry titled "RDCP Error Codes" with the following initial entries (aligned with the RDCP specification and schema):</p>
+<table>
+<thead>
+<tr>
+<th>Error Code</th>
+<th>HTTP Status</th>
+<th>Description</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RDCP_AUTH_REQUIRED</td>
+<td>401</td>
+<td>Authentication required</td>
+<td>Section 3.4</td>
+</tr>
+<tr>
+<td>RDCP_FORBIDDEN</td>
+<td>403</td>
+<td>Insufficient permissions</td>
+<td>Section 3.4</td>
+</tr>
+<tr>
+<td>RDCP_MALFORMED_REQUEST</td>
+<td>400</td>
+<td>Malformed request</td>
+<td>Section 6.2</td>
+</tr>
+<tr>
+<td>RDCP_CATEGORY_NOT_FOUND</td>
+<td>404</td>
+<td>Category does not exist</td>
+<td>Section 6.2</td>
+</tr>
+<tr>
+<td>RDCP_NOT_FOUND</td>
+<td>404</td>
+<td>Resource does not exist</td>
+<td>Section 6.2</td>
+</tr>
+<tr>
+<td>RDCP_RATE_LIMITED</td>
+<td>429</td>
+<td>Too many requests</td>
+<td>Section 8.5</td>
+</tr>
+<tr>
+<td>RDCP_SERVER_ERROR</td>
+<td>500</td>
+<td>Server error</td>
+<td>Section 6.2</td>
+</tr>
+<tr>
+<td>RDCP_UNAVAILABLE</td>
+<td>503</td>
+<td>Service temporarily unavailable</td>
+<td>Section 6.2</td>
+</tr>
+</tbody>
+</table>
+<p>Registration Procedure: Specification Required</p>
+<p>Expert Review: Designated experts should ensure:
+1. Error codes follow naming convention: RDCP_[CONTEXT]_[CONDITION]
+2. HTTP status codes are appropriate for the error type
+3. Descriptions are clear and unambiguous
+4. No conflicts with existing codes</p>
+<p>Change Procedure: New entries require IETF review or IESG approval</p>
+<h3 id="94-authentication-method-registry">9.4 Authentication Method Registry<a class="headerlink" href="#94-authentication-method-registry" title="Permanent link">¶</a></h3>
+<p>IANA is requested to create and maintain a registry titled "RDCP Authentication Methods":</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>api-key</td>
+<td>Shared secret API key</td>
+<td>Section 3.2</td>
+</tr>
+<tr>
+<td>bearer</td>
+<td>JWT or OAuth2 bearer token</td>
+<td>Section 3.2</td>
+</tr>
+<tr>
+<td>mtls</td>
+<td>Mutual TLS with client certificates</td>
+<td>Section 3.2</td>
+</tr>
+<tr>
+<td>hybrid</td>
+<td>Combination of mtls + bearer</td>
+<td>Section 3.2</td>
+</tr>
+</tbody>
+</table>
+<p>Registration Procedure: Specification Required</p>
+<p>Expert Review: Designated experts should verify:
+1. Method is standards-based or widely adopted
+2. Security properties are documented
+3. Interoperability considerations are addressed</p>
+<h3 id="95-scope-registry">9.5 Scope Registry<a class="headerlink" href="#95-scope-registry" title="Permanent link">¶</a></h3>
+<p>IANA is requested to create and maintain a registry titled "RDCP Authorization Scopes":</p>
+<table>
+<thead>
+<tr>
+<th>Scope</th>
+<th>Operations</th>
+<th>Description</th>
+<th>Reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>discovery</td>
+<td>GET endpoints</td>
+<td>Read system information</td>
+<td>Section 3.3</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status/Health</td>
+<td>Monitor system state</td>
+<td>Section 3.3</td>
+</tr>
+<tr>
+<td>control</td>
+<td>POST control</td>
+<td>Modify debug settings</td>
+<td>Section 3.3</td>
+</tr>
+<tr>
+<td>admin</td>
+<td>All operations</td>
+<td>Full access + audit trail</td>
+<td>Section 3.3</td>
+</tr>
+</tbody>
+</table>
+<p>Registration Procedure: Specification Required</p>
+<p>Expert Review: Review should ensure scopes follow principle of least privilege</p>
+<hr/>
+<h2 id="10-compatibility">10. Compatibility<a class="headerlink" href="#10-compatibility" title="Permanent link">¶</a></h2>
+<h3 id="101-version-negotiation">10.1 Version Negotiation<a class="headerlink" href="#101-version-negotiation" title="Permanent link">¶</a></h3>
 <p>Clients MUST include protocol version:
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-22-1" id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="err">Accept: application/vnd.rdcp.v1+json</span>
 </code></pre></div></p>
 <p>Servers MUST respond with:
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="err">Content-Type: application/vnd.rdcp.v1+json</span>
 </code></pre></div></p>
-<h3 id="92-backward-compatibility">9.2 Backward Compatibility<a class="headerlink" href="#92-backward-compatibility" title="Permanent link">¶</a></h3>
+<h3 id="102-backward-compatibility">10.2 Backward Compatibility<a class="headerlink" href="#102-backward-compatibility" title="Permanent link">¶</a></h3>
 <p>Future versions:
 - MUST maintain backward compatibility for 2 major versions
 - MUST use version in URL path (<code>/rdcp/v2/...</code>)
 - SHOULD provide version negotiation</p>
 <hr/>
-<h2 id="10-extensibility">10. Extensibility<a class="headerlink" href="#10-extensibility" title="Permanent link">¶</a></h2>
-<h3 id="101-custom-categories">10.1 Custom Categories<a class="headerlink" href="#101-custom-categories" title="Permanent link">¶</a></h3>
+<h2 id="11-extensibility">11. Extensibility<a class="headerlink" href="#11-extensibility" title="Permanent link">¶</a></h2>
+<h3 id="111-custom-categories">11.1 Custom Categories<a class="headerlink" href="#111-custom-categories" title="Permanent link">¶</a></h3>
 <p>Implementations MAY add custom debug categories:
 - MUST prefix with <code>X-</code> (e.g., <code>X-CUSTOM-FEATURE</code>)
 - MUST document in discovery endpoint</p>
-<h3 id="102-vendor-extensions">10.2 Vendor Extensions<a class="headerlink" href="#102-vendor-extensions" title="Permanent link">¶</a></h3>
+<h3 id="112-vendor-extensions">11.2 Vendor Extensions<a class="headerlink" href="#112-vendor-extensions" title="Permanent link">¶</a></h3>
 <p>Vendors MAY extend responses with additional fields:
 - MUST prefix with vendor identifier
 - MUST NOT break standard clients</p>
@@ -1958,7 +2498,7 @@
 <a href="#__codelineno-24-7" id="__codelineno-24-7" name="__codelineno-24-7"></a><span class="p">}</span>
 </code></pre></div></p>
 <hr/>
-<h2 id="11-compliance-levels">11. Compliance Levels<a class="headerlink" href="#11-compliance-levels" title="Permanent link">¶</a></h2>
+<h2 id="12-compliance-levels">12. Compliance Levels<a class="headerlink" href="#12-compliance-levels" title="Permanent link">¶</a></h2>
 <h3 id="level-1-basic">Level 1: Basic<a class="headerlink" href="#level-1-basic" title="Permanent link">¶</a></h3>
 <ul>
 <li>Implements all required endpoints</li>
@@ -1988,12 +2528,23 @@
 <li>Multiple active keys per client</li>
 </ul>
 <hr/>
-<h2 id="12-references">12. References<a class="headerlink" href="#12-references" title="Permanent link">¶</a></h2>
+<h2 id="13-references">13. References<a class="headerlink" href="#13-references" title="Permanent link">¶</a></h2>
+<h3 id="131-normative-references">13.1 Normative References<a class="headerlink" href="#131-normative-references" title="Permanent link">¶</a></h3>
 <ul>
 <li>RFC 2119: Key words for use in RFCs</li>
-<li>RFC 7231: HTTP/1.1 Semantics and Content</li>
-<li>RFC 7807: Problem Details for HTTP APIs</li>
+<li>RFC 8174: Ambiguity of Uppercase vs Lowercase in RFC 2119 Key Words</li>
 <li>RFC 8259: JSON Data Interchange Format</li>
+<li>RFC 8615: Well-Known Uniform Resource Identifiers (URIs)</li>
+<li>RFC 3339: Date and Time on the Internet: Timestamps</li>
+<li>RFC 9110: HTTP Semantics</li>
+<li>RFC 9112: HTTP/1.1</li>
+<li>RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3</li>
+</ul>
+<h3 id="132-informative-references">13.2 Informative References<a class="headerlink" href="#132-informative-references" title="Permanent link">¶</a></h3>
+<ul>
+<li>RFC 7807: Problem Details for HTTP APIs</li>
+<li>RFC 7519: JSON Web Token (JWT)</li>
+<li>RFC 6749: The OAuth 2.0 Authorization Framework</li>
 </ul>
 <hr/>
 <h2 id="appendix-a-implementation-notes">Appendix A: Implementation Notes<a class="headerlink" href="#appendix-a-implementation-notes" title="Permanent link">¶</a></h2>
@@ -2063,12 +2614,29 @@
 </ul>
 <hr/>
 <p><em>End of RDCP Protocol Specification v1.0</em></p>
+<hr/>
+<h2 id="appendix-d-authors-addresses">Appendix D: Authors' Addresses<a class="headerlink" href="#appendix-d-authors-addresses" title="Permanent link">¶</a></h2>
+<p>[Your Name]
+[Your Organization]
+Email: [your.email@example.com]
+URI: https://your-website.com</p>
+<hr/>
+<h2 id="appendix-e-acknowledgments">Appendix E: Acknowledgments<a class="headerlink" href="#appendix-e-acknowledgments" title="Permanent link">¶</a></h2>
+<p>The authors would like to thank contributors and reviewers for their valuable feedback and contributions to this specification.</p>
+<hr/>
+<h2 id="status-of-this-memo-template">Status of This Memo (Template)<a class="headerlink" href="#status-of-this-memo-template" title="Permanent link">¶</a></h2>
+<p>This document is an Internet-Draft and is subject to all provisions of Section 3 of RFC 2026. Internet-Drafts are working documents of the Internet Engineering Task Force (IETF). Note that other groups may also distribute working documents as Internet-Drafts. The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
+<p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time. It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
+<hr/>
+<h2 id="copyright-notice-template">Copyright Notice (Template)<a class="headerlink" href="#copyright-notice-template" title="Permanent link">¶</a></h2>
+<p>Copyright (c) 2025 IETF Trust and the persons identified as the document authors. All rights reserved.</p>
+<p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document. Please review these documents carefully, as they describe your rights and restrictions with respect to this document.</p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="Last update">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 2, 2025 16:52:36 UTC">October 2, 2025 16:52:36</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 3, 2025 23:25:53 UTC">October 3, 2025 23:25:53</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="Created">
