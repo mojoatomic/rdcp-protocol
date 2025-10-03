@@ -1,1 +1,1 @@
-{"error":{"code":"FORBIDDEN","message":"Insufficient permissions","protocol":"rdcp/1.0"}}
+{"error":{"code":"RDCP_FORBIDDEN","message":"Insufficient permissions","protocol":"rdcp/1.0"}}
