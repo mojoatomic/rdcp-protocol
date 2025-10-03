@@ -1,0 +1,18 @@
+{
+  "protocol": "rdcp/1.0",
+  "timestamp": "2025-09-17T10:30:00.000Z",
+  "categories": [
+    {
+      "name": "DATABASE",
+      "description": "Database operations",
+      "enabled": true,
+      "temporary": false,
+      "metrics": { "callsTotal": 1234, "callsPerSecond": 2.3 }
+    }
+  ],
+  "performance": {
+    "totalCalls": 45678,
+    "callsPerSecond": 2.3,
+    "categoryBreakdown": { "DATABASE": 1234 }
+  }
+}

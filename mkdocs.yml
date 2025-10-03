@@ -92,4 +92,5 @@ nav:
     - Reference: api/reference.md
     - Playground: api/playground.md
   - Error Codes: error-codes.md
+  - Compliance Kit: compliance-kit.md
   - Compliance Report: PROTOCOL-COMPLIANCE-REPORT.md

@@ -1,0 +1,28 @@
+name: Validate Compliance Kit
+
+on:
+  push:
+    paths:
+      - 'compliance-kit/**'
+      - 'schema/**'
+      - 'scripts/validate-fixtures.js'
+  pull_request:
+    paths:
+      - 'compliance-kit/**'
+      - 'schema/**'
+      - 'scripts/validate-fixtures.js'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: |
+          npm init -y
+          npm i ajv ajv-formats
+      - name: Validate fixtures against JSON Schemas
+        run: node scripts/validate-fixtures.js

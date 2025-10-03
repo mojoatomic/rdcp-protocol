@@ -1,0 +1,83 @@
+{
+  "version": "1.0",
+  "tests": [
+    {
+      "id": "well-known-200",
+      "name": "Well-known discovery returns protocol info",
+      "request": { "method": "GET", "path": "/.well-known/rdcp" },
+      "expect": { "status": 200, "schema": "schema/v1/endpoints/protocol-discovery.json" }
+    },
+    {
+      "id": "discovery-200",
+      "name": "Discovery lists categories",
+      "request": { "method": "GET", "path": "/rdcp/v1/discovery", "headers": { "X-RDCP-Tenant-ID": "TENANT_ID" } },
+      "expect": { "status": 200, "schema": "schema/v1/endpoints/discovery-response.json" }
+    },
+    {
+      "id": "discovery-tenant-invalid-400",
+      "name": "Discovery rejects invalid tenant header",
+      "request": { "method": "GET", "path": "/rdcp/v1/discovery", "headers": { "X-RDCP-Tenant-ID": "tenant with spaces" } },
+      "expect": { "status": 400, "schema": "schema/v1/responses/error.json" }
+    },
+    {
+      "id": "control-enable-200",
+      "name": "Control enable DATABASE succeeds",
+      "request": { "method": "POST", "path": "/rdcp/v1/control", "bodyFixture": "fixtures/control/request-enable-valid.json" },
+      "expect": { "status": 200, "schema": "schema/v1/endpoints/control-response.json" }
+    },
+    {
+      "id": "control-invalid-action-400",
+      "name": "Control invalid action rejected",
+      "request": { "method": "POST", "path": "/rdcp/v1/control", "bodyFixture": "fixtures/control/request-invalid-action.json" },
+      "expect": { "status": 400, "schema": "schema/v1/responses/error.json" }
+    },
+    {
+      "id": "control-invalid-category-400",
+      "name": "Control invalid category rejected",
+      "request": { "method": "POST", "path": "/rdcp/v1/control", "bodyFixture": "fixtures/control/request-invalid-category.json" },
+      "expect": { "status": 400, "schema": "schema/v1/responses/error.json" }
+    },
+    {
+      "id": "control-missing-categories-400",
+      "name": "Control missing categories rejected",
+      "request": { "method": "POST", "path": "/rdcp/v1/control", "bodyFixture": "fixtures/control/request-missing-categories.json" },
+      "expect": { "status": 400, "schema": "schema/v1/responses/error.json" }
+    },
+    {
+      "id": "status-200",
+      "name": "Status endpoint returns current states",
+      "request": { "method": "GET", "path": "/rdcp/v1/status" },
+      "expect": { "status": 200, "schema": "schema/v1/endpoints/status-response.json" }
+    },
+    {
+      "id": "errors-401",
+      "name": "Protected endpoints require auth",
+      "request": { "method": "GET", "path": "/rdcp/v1/status", "headers": { "Authorization": "" } },
+      "expect": { "status": 401, "schema": "schema/v1/responses/error.json" }
+    },
+    {
+      "id": "errors-403",
+      "name": "Insufficient scope rejected",
+      "request": { "method": "POST", "path": "/rdcp/v1/control" },
+      "expect": { "status": 403, "schema": "schema/v1/responses/error.json" }
+    },
+    {
+      "id": "errors-404",
+      "name": "Unknown category returns 404",
+      "request": { "method": "POST", "path": "/rdcp/v1/control", "bodyFixture": "fixtures/control/request-invalid-category.json" },
+      "expect": { "status": 404, "schema": "schema/v1/responses/error.json" }
+    }
+  ],
+  "sequences": [
+    {
+      "id": "enable-and-verify",
+      "name": "Enable DATABASE then verify via status",
+      "steps": [
+        { "use": "control-enable-200" },
+        { "request": { "method": "GET", "path": "/rdcp/v1/status" },
+          "assert": { "status": 200, "schema": "schema/v1/endpoints/status-response.json", "bodyContains": { "categories": { "DATABASE": true } } }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"steps":[{"use":"control-enable-200"},{"request":{"method":"GET","path":"/rdcp/v1/status"},"assert":{"status":200,"schema":"schema/v1/endpoints/status-response.json","bodyContains":{"categories":{"DATABASE":true}}}}]}
