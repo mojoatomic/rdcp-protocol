@@ -1,24 +1,11 @@
-# RDCP OpenAPI (v1)
+# API Documentation
 
-This page renders the RDCP OpenAPI contract for version 1.
+RDCP provides two ways to explore the API:
 
-!!! note "Multi-tenancy header and server hostname"
-    - X-RDCP-Tenant-ID: Optional header used in multi-tenant deployments to scope discovery, control, status and metrics to a specific tenant.
-    - Format: an opaque string up to 255 chars matching `^[a-zA-Z0-9._-]{1,255}$`.
-    - Supported endpoints: `/rdcp/v1/discovery`, `/rdcp/v1/control`, `/rdcp/v1/status`, `/rdcp/v1/metrics`.
-    - Servers: the spec defines a templated server `https://{hostname}` with default `localhost:3000`. Replace `{hostname}` with your deployment's host.
+## [API Reference](reference.md)
+Clean, readable documentation of all endpoints, schemas, and responses.
 
-```redoc
-spec-url: ./v1/openapi.json
-hide-download-button: true
-```
+## [API Playground](playground.md)
+Interactive testing environment - try API calls directly from your browser.
 
-Example (curl):
-
-```bash path=null start=null
-HOST=rdcp.example.com
-TENANT=acme-prod
-curl -fsS \
-  -H "X-RDCP-Tenant-ID: $TENANT" \
-  "https://$HOST/rdcp/v1/status"
-```
+Both views use the same OpenAPI specification: [openapi.json](v1/openapi.json)

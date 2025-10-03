@@ -46,6 +46,7 @@ plugins:
       enable_creation_date: true
       type: datetime
   - redoc-tag
+  - swagger-ui-tag
 
 # Extensions
 markdown_extensions:
@@ -87,6 +88,9 @@ nav:
       - Health Response: schemas/endpoints/health-response.md
     - Response Types:
       - Error Response: schemas/responses/error.md
-  - API Reference: api/index.md
+  - API:
+    - Overview: api/index.md
+    - Reference: api/reference.md
+    - Playground: api/playground.md
   - Error Codes: error-codes.md
   - Compliance Report: PROTOCOL-COMPLIANCE-REPORT.md
