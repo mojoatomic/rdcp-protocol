@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" version="3" ipr="trust200902" submissionType="IETF" category="exp" consensus="false" docName="draft-<author>-rdcp-00">
+  <front>
+    <title abbrev="RDCP v1.0">Runtime Debug Control Protocol (RDCP) v1.0</title>
+    <author fullname="TBD" initials="T." surname="BD">
+      <organization>MojoAtomic</organization>
+      <address>
+        <email>TBD@example.com</email>
+      </address>
+    </author>
+    <date/>
+    <abstract>
+      <t>Abstract TBD. See rfc-submission/missing-sections.md for the current draft.</t>
+    </abstract>
+  </front>
+  <middle>
+    <section anchor="intro" title="Introduction">
+      <t>Overview and motivation for RDCP.</t>
+    </section>
+    <section anchor="arch" title="Protocol Architecture">
+      <t>Transports, endpoints, and actors.</t>
+    </section>
+    <section anchor="auth" title="Authentication and Authorization">
+      <t>Security levels, headers, scopes.</t>
+    </section>
+    <section anchor="mt" title="Multi-Tenancy">
+      <t>Tenant headers and isolation levels.</t>
+    </section>
+    <section anchor="endpoints" title="Endpoints">
+      <section anchor="discovery" title="Discovery">
+        <t>Discovery endpoint specification.</t>
+      </section>
+      <section anchor="control" title="Control">
+        <t>Control endpoint specification.</t>
+      </section>
+      <section anchor="status" title="Status">
+        <t>Status endpoint specification.</t>
+      </section>
+      <section anchor="health" title="Health">
+        <t>Health endpoint specification.</t>
+      </section>
+      <section anchor="metrics" title="Metrics (optional)">
+        <t>Metrics endpoint (if standardized).</t>
+      </section>
+    </section>
+    <section anchor="errors" title="Error Handling">
+      <t>Error model and codes.</t>
+    </section>
+    <section anchor="security" title="Security Considerations">
+      <t>See rfc-submission/missing-sections.md for the expanded outline.</t>
+    </section>
+    <section anchor="iana" title="IANA Considerations">
+      <t>See rfc-submission/missing-sections.md for planned registries.</t>
+    </section>
+    <section anchor="compliance" title="Compliance Levels">
+      <t>Compliance levels and requirements.</t>
+    </section>
+  </middle>
+  <back>
+    <references>
+      <name>Normative References</name>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8174.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8259.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8446.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.8615.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.3339.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9110.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.9112.xml"/>
+    </references>
+    <references>
+      <name>Informative References</name>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7807.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.7519.xml"/>
+      <xi:include href="https://bib.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml"/>
+    </references>
+    <section anchor="appendix-examples" title="Examples">
+      <t>Example requests/responses (to be expanded).</t>
+    </section>
+  </back>
+</rfc>
