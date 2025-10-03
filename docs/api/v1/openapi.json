@@ -64,7 +64,8 @@
                 }
               }
             }
-          }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
         }
       }
     },
@@ -75,13 +76,7 @@
         "operationId": "getDiscovery",
         "tags": ["Discovery"],
         "parameters": [
-          {
-            "name": "X-RDCP-Tenant-ID",
-            "in": "header",
-            "description": "Tenant identifier for multi-tenant deployments",
-            "required": false,
-            "schema": { "type": "string", "pattern": "^[a-zA-Z0-9._-]{1,255}$" }
-          }
+          { "$ref": "#/components/parameters/TenantId" }
         ],
         "responses": {
           "200": {
@@ -130,13 +125,7 @@
         "operationId": "postControl",
         "tags": ["Control"],
         "parameters": [
-          {
-            "name": "X-RDCP-Tenant-ID",
-            "in": "header",
-            "description": "Tenant identifier for multi-tenant deployments",
-            "required": false,
-            "schema": { "type": "string", "pattern": "^[a-zA-Z0-9._-]{1,255}$" }
-          }
+          { "$ref": "#/components/parameters/TenantId" }
         ],
         "requestBody": {
           "required": true,
@@ -200,13 +189,7 @@
         "operationId": "getStatus",
         "tags": ["Monitoring"],
         "parameters": [
-          {
-            "name": "X-RDCP-Tenant-ID",
-            "in": "header",
-            "description": "Tenant identifier for multi-tenant deployments",
-            "required": false,
-            "schema": { "type": "string", "pattern": "^[a-zA-Z0-9._-]{1,255}$" }
-          }
+          { "$ref": "#/components/parameters/TenantId" }
         ],
         "responses": {
           "200": {
@@ -254,6 +237,7 @@
               }
             }
           },
+          "400": { "$ref": "#/components/responses/BadRequest" },
           "503": {
             "description": "Service unavailable",
             "content": {
@@ -279,7 +263,7 @@
         "operationId": "getMetrics",
         "tags": ["Monitoring"],
         "parameters": [
-          { "name": "X-RDCP-Tenant-ID", "in": "header", "description": "Tenant identifier for multi-tenant deployments", "required": false, "schema": { "type": "string" } }
+          { "$ref": "#/components/parameters/TenantId" }
         ],
         "responses": {
           "200": {

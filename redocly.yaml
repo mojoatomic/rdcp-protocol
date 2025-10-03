@@ -1,0 +1,12 @@
+extends:
+  - recommended
+
+rules:
+  operation-operationId: error
+  path-parameters-defined: error
+  no-unresolved-refs: error
+  no-identical-paths: error
+
+apis:
+  rdcp@v1:
+    root: docs/api/v1/openapi.json
