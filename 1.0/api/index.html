@@ -8,10 +8,10 @@
 <meta content="Runtime Debug Control Protocol (RDCP) v1.0 - Language-agnostic specification for runtime debug control in distributed systems" name="description"/>
 <link href="https://mojoatomic.github.io/rdcp-protocol/1.0/api/" rel="canonical"/>
 <link href="../schemas/responses/error/" rel="prev"/>
-<link href="../error-codes/" rel="next"/>
+<link href="reference/" rel="next"/>
 <link href="../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
-<title>API Reference - RDCP Protocol Specification</title>
+<title>Overview - RDCP Protocol Specification</title>
 <link href="../assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
 <link href="../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -24,7 +24,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#rdcp-openapi-v1">
+<a class="md-skip" href="#api-documentation">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              API Reference
+              Overview
             
           </span>
 </div>
@@ -278,14 +278,77 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" id="__nav_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+<span class="md-ellipsis">
+    API
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="true" aria-labelledby="__nav_5_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+            API
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Overview
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
-    API Reference
+    Overview
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#api-reference">
+<span class="md-ellipsis">
+      API Reference
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#api-playground">
+<span class="md-ellipsis">
+      API Playground
+    </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="reference/">
+<span class="md-ellipsis">
+    Reference
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="playground/">
+<span class="md-ellipsis">
+    Playground
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../error-codes/">
@@ -312,6 +375,26 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#api-reference">
+<span class="md-ellipsis">
+      API Reference
+    </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#api-playground">
+<span class="md-ellipsis">
+      API Playground
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -321,33 +404,19 @@
 <a class="md-content__button md-icon" href="https://github.com/mojoatomic/rdcp-protocol/edit/main/api/index.md" rel="edit" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
 </a>
-<h1 id="rdcp-openapi-v1">RDCP OpenAPI (v1)<a class="headerlink" href="#rdcp-openapi-v1" title="Permanent link">¶</a></h1>
-<p>This page renders the RDCP OpenAPI contract for version 1.</p>
-<div class="admonition note">
-<p class="admonition-title">Multi-tenancy header and server hostname</p>
-<ul>
-<li>X-RDCP-Tenant-ID: Optional header used in multi-tenant deployments to scope discovery, control, status and metrics to a specific tenant.</li>
-<li>Format: an opaque string up to 255 chars matching <code>^[a-zA-Z0-9._-]{1,255}$</code>.</li>
-<li>Supported endpoints: <code>/rdcp/v1/discovery</code>, <code>/rdcp/v1/control</code>, <code>/rdcp/v1/status</code>, <code>/rdcp/v1/metrics</code>.</li>
-<li>Servers: the spec defines a templated server <code>https://{hostname}</code> with default <code>localhost:3000</code>. Replace <code>{hostname}</code> with your deployment's host.</li>
-</ul>
-</div>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>spec-url: ./v1/openapi.json
-<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>hide-download-button: true
-</code></pre></div>
-<p>Example (curl):</p>
-<p><code>bash path=null start=null
-HOST=rdcp.example.com
-TENANT=acme-prod
-curl -fsS \
-  -H "X-RDCP-Tenant-ID: $TENANT" \
-  "https://$HOST/rdcp/v1/status"</code></p>
+<h1 id="api-documentation">API Documentation<a class="headerlink" href="#api-documentation" title="Permanent link">¶</a></h1>
+<p>RDCP provides two ways to explore the API:</p>
+<h2 id="api-reference"><a href="reference/">API Reference</a><a class="headerlink" href="#api-reference" title="Permanent link">¶</a></h2>
+<p>Clean, readable documentation of all endpoints, schemas, and responses.</p>
+<h2 id="api-playground"><a href="playground/">API Playground</a><a class="headerlink" href="#api-playground" title="Permanent link">¶</a></h2>
+<p>Interactive testing environment - try API calls directly from your browser.</p>
+<p>Both views use the same OpenAPI specification: <a href="v1/openapi.json">openapi.json</a></p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="Last update">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 3, 2025 16:57:43 UTC">October 3, 2025 16:57:43</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 3, 2025 17:08:36 UTC">October 3, 2025 17:08:36</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="Created">
@@ -380,13 +449,13 @@ curl -fsS \
               </div>
 </div>
 </a>
-<a aria-label="Next: Error Codes" class="md-footer__link md-footer__link--next" href="../error-codes/">
+<a aria-label="Next: Reference" class="md-footer__link md-footer__link--next" href="reference/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Error Codes
+                Reference
               </div>
 </div>
 <div class="md-footer__button md-icon">
