@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" version="3" ipr="trust200902" submissionType="IETF" category="exp" consensus="false" docName="draft-<author>-rdcp-00">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" version="3" ipr="trust200902" submissionType="IETF" category="exp" consensus="false" docName="draft-rdcp-00">
   <front>
     <title abbrev="RDCP v1.0">Runtime Debug Control Protocol (RDCP) v1.0</title>
-    <author fullname="TBD" initials="T." surname="BD">
+<author fullname="TBD Author" initials="T" surname="Author">
       <organization>MojoAtomic</organization>
       <address>
         <email>TBD@example.com</email>
