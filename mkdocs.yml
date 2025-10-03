@@ -80,14 +80,13 @@ nav:
   - Schemas:
     - Overview: schemas/index.md
     - Common Types: schemas/common.md
-    - Endpoints:
-      - Control Request: schemas/endpoints/control-request.md
-      - Control Response: schemas/endpoints/control-response.md
-      - Discovery Response: schemas/endpoints/discovery-response.md
-      - Status Response: schemas/endpoints/status-response.md
-      - Health Response: schemas/endpoints/health-response.md
-    - Response Types:
-      - Error Response: schemas/responses/error.md
+    - Protocol Discovery: schemas/endpoints/protocol-discovery.md
+    - Control Request: schemas/endpoints/control-request.md
+    - Control Response: schemas/endpoints/control-response.md
+    - Discovery Response: schemas/endpoints/discovery-response.md
+    - Status Response: schemas/endpoints/status-response.md
+    - Health Response: schemas/endpoints/health-response.md
+    - Error Response: schemas/responses/error.md
   - API:
     - Overview: api/index.md
     - Reference: api/reference.md
