@@ -29,6 +29,7 @@ jobs:
         run: |
           pip install mkdocs-material
           pip install mkdocs-git-revision-date-localized-plugin
+          pip install mkdocs-redoc-tag
       - name: MkDocs build (no deploy)
         run: mkdocs build --strict
 
@@ -51,6 +52,7 @@ jobs:
         run: |
           pip install mkdocs-material
           pip install mkdocs-git-revision-date-localized-plugin
+          pip install mkdocs-redoc-tag
           pip install mike
       - name: Deploy with versioning
         run: |

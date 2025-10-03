@@ -45,6 +45,7 @@ plugins:
   - git-revision-date-localized:
       enable_creation_date: true
       type: datetime
+  - redoc-tag
 
 # Extensions
 markdown_extensions:
@@ -86,5 +87,6 @@ nav:
       - Health Response: schemas/endpoints/health-response.md
     - Response Types:
       - Error Response: schemas/responses/error.md
+  - API Reference: api/index.md
   - Error Codes: error-codes.md
   - Compliance Report: PROTOCOL-COMPLIANCE-REPORT.md
