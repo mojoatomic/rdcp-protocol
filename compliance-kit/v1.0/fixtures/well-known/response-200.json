@@ -1,0 +1,23 @@
+{
+  "protocol": "rdcp/1.0",
+  "endpoints": {
+    "discovery": "/rdcp/v1/discovery",
+    "control": "/rdcp/v1/control",
+    "status": "/rdcp/v1/status",
+    "health": "/rdcp/v1/health"
+  },
+  "capabilities": {
+    "multiTenancy": true,
+    "performanceMetrics": true,
+    "temporaryControls": true,
+    "auditTrail": true
+  },
+  "security": {
+    "level": "standard",
+    "methods": ["api-key", "bearer"],
+    "scopes": ["discovery", "status", "control", "admin"],
+    "required": true,
+    "keyRotation": true,
+    "tokenRefresh": true
+  }
+}
