@@ -10,11 +10,11 @@ RDCP (Runtime Debug Control Protocol) is a standardized HTTP-based protocol for 
 
 ## Key Features
 
-- **🚀 Runtime Control**: Enable/disable debug categories without restarts
-- **🔐 Multi-level Security**: Basic, Standard, and Enterprise authentication modes  
-- **🏢 Multi-tenant Ready**: Built-in tenant isolation support
-- **📊 Performance Aware**: Zero-overhead when debug categories are disabled
-- **🌐 Language Agnostic**: HTTP/JSON protocol works with any technology stack
+- **Runtime Control**: Enable/disable debug categories without restarts
+- **Multi-level Security**: Basic, Standard, and Enterprise authentication modes  
+- **Multi-tenant Ready**: Built-in tenant isolation support
+- **Performance Aware**: Zero-overhead when debug categories are disabled
+- **Language Agnostic**: HTTP/JSON protocol works with any technology stack
 
 ## Quick Start
 

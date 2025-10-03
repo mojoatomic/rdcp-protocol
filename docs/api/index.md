@@ -1,6 +1,6 @@
 # API Documentation
 
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0) · [Download OpenAPI v1 (JSON)](v1/openapi.json)
 
 RDCP provides two ways to explore the API:
 
