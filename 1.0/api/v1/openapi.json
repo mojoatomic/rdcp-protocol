@@ -32,6 +32,13 @@
         "description": "Returns protocol version, available endpoints, capabilities, and security configuration",
         "operationId": "getWellKnown",
         "tags": ["Discovery"],
+        "x-codeSamples": [
+          {
+            "lang": "bash",
+            "label": "curl",
+            "source": "curl -fsS -H 'Accept: application/json' 'https://{hostname}/.well-known/rdcp'"
+          }
+        ],
         "security": [],
         "responses": {
           "200": {
@@ -77,6 +84,13 @@
         "tags": ["Discovery"],
         "parameters": [
           { "$ref": "#/components/parameters/TenantId" }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "bash",
+            "label": "curl",
+            "source": "curl -fsS -H 'Accept: application/json' -H 'X-RDCP-Tenant-ID: TENANT_ID' 'https://{hostname}/rdcp/v1/discovery'"
+          }
         ],
         "responses": {
           "200": {
@@ -126,6 +140,13 @@
         "tags": ["Control"],
         "parameters": [
           { "$ref": "#/components/parameters/TenantId" }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "bash",
+            "label": "curl",
+            "source": "curl -fsS -X POST 'https://{hostname}/rdcp/v1/control' -H 'Content-Type: application/json' -H 'X-RDCP-Tenant-ID: TENANT_ID' --data '{\"action\":\"enable\",\"categories\":[\"DATABASE\"]}'"
+          }
         ],
         "requestBody": {
           "required": true,
@@ -191,6 +212,13 @@
         "parameters": [
           { "$ref": "#/components/parameters/TenantId" }
         ],
+        "x-codeSamples": [
+          {
+            "lang": "bash",
+            "label": "curl",
+            "source": "curl -fsS -H 'Accept: application/json' -H 'X-RDCP-Tenant-ID: TENANT_ID' 'https://{hostname}/rdcp/v1/status'"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Current debug status",
@@ -219,6 +247,13 @@
         "description": "Returns system health status and dependency checks",
         "operationId": "getHealth",
         "tags": ["Monitoring"],
+        "x-codeSamples": [
+          {
+            "lang": "bash",
+            "label": "curl",
+            "source": "curl -fsS -H 'Accept: application/json' 'https://{hostname}/rdcp/v1/health'"
+          }
+        ],
         "responses": {
           "200": {
             "description": "System health information",
@@ -264,6 +299,13 @@
         "tags": ["Monitoring"],
         "parameters": [
           { "$ref": "#/components/parameters/TenantId" }
+        ],
+        "x-codeSamples": [
+          {
+            "lang": "bash",
+            "label": "curl",
+            "source": "curl -fsS -H 'Accept: application/json' -H 'X-RDCP-Tenant-ID: TENANT_ID' 'https://{hostname}/rdcp/v1/metrics'"
+          }
         ],
         "responses": {
           "200": {
