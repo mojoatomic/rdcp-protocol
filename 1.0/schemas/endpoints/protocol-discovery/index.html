@@ -6,12 +6,12 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="Runtime Debug Control Protocol (RDCP) v1.0 - Language-agnostic specification for runtime debug control in distributed systems" name="description"/>
-<link href="https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/discovery-response/" rel="canonical"/>
-<link href="../control-response/" rel="prev"/>
-<link href="../status-response/" rel="next"/>
+<link href="https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/protocol-discovery/" rel="canonical"/>
+<link href="../../common/" rel="prev"/>
+<link href="../control-request/" rel="next"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.21" name="generator"/>
-<title>Discovery Response - RDCP Protocol Specification</title>
+<title>Protocol Discovery - RDCP Protocol Specification</title>
 <link href="../../../assets/stylesheets/main.2a3383ac.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.06af60db.min.css" rel="stylesheet"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
@@ -24,7 +24,7 @@
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#discovery-response-schema">
+<a class="md-skip" href="#protocol-discovery">
           Skip to content
         </a>
 </div>
@@ -50,7 +50,7 @@
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              Discovery Response
+              Protocol Discovery
             
           </span>
 </div>
@@ -191,13 +191,36 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../protocol-discovery/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+<span class="md-ellipsis">
+    Protocol Discovery
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
 <span class="md-ellipsis">
     Protocol Discovery
     
   </span>
 </a>
+<nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-response">
+<span class="md-ellipsis">
+      Example response
+    </span>
+</a>
+</li>
+</ul>
+</nav>
 </li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../control-request/">
@@ -215,9 +238,8 @@
   </span>
 </a>
 </li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" id="__toc" type="checkbox"/>
-<a class="md-nav__link md-nav__link--active" href="./">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../discovery-response/">
 <span class="md-ellipsis">
     Discovery Response
     
@@ -318,57 +340,80 @@
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="Table of contents" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#example-response">
+<span class="md-ellipsis">
+      Example response
+    </span>
+</a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
 </div>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/mojoatomic/rdcp-protocol/edit/main/schemas/endpoints/discovery-response.md" rel="edit" title="Edit this page">
+<a class="md-content__button md-icon" href="https://github.com/mojoatomic/rdcp-protocol/edit/main/schemas/endpoints/protocol-discovery.md" rel="edit" title="Edit this page">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
 </a>
-<h1 id="discovery-response-schema">Discovery Response Schema<a class="headerlink" href="#discovery-response-schema" title="Permanent link">¶</a></h1>
-<p>Defines the response body for <code>GET /rdcp/v1/discovery</code>.</p>
+<h1 id="protocol-discovery">Protocol Discovery<a class="headerlink" href="#protocol-discovery" title="Permanent link">¶</a></h1>
+<p>The Protocol Discovery document is returned by the well-known endpoint <code>/.well-known/rdcp</code> and describes the RDCP protocol version, endpoint locations, capabilities, and security configuration.</p>
 <ul>
-<li>Canonical: https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/discovery-response.json</li>
-<li>Repository: schema/v1/endpoints/discovery-response.json</li>
+<li>HTTP method: GET</li>
+<li>Path: <code>/.well-known/rdcp</code></li>
+<li>Canonical: https://mojoatomic.github.io/rdcp-protocol/schema/v1/endpoints/protocol-discovery.json</li>
+<li>Repository: schema/v1/endpoints/protocol-discovery.json</li>
 </ul>
-<p>Key fields
-- protocol, timestamp
-- categories[]: name, description, enabled, temporary, metrics
-- performance: totalCalls, callsPerSecond, categoryBreakdown</p>
-<p>Sample response</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">{</span>
-<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rdcp/1.0"</span><span class="p">,</span>
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2025-09-17T10:30:00Z"</span><span class="p">,</span>
-<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="p">{</span>
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATABASE"</span><span class="p">,</span>
-<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Database operations"</span><span class="p">,</span>
-<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">      </span><span class="nt">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">      </span><span class="nt">"temporary"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">      </span><span class="nt">"metrics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"callsTotal"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="p">,</span><span class="w"> </span><span class="nt">"callsPerSecond"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.3</span><span class="w"> </span><span class="p">}</span>
-<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="p">}</span>
-<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">  </span><span class="p">],</span>
-<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">  </span><span class="nt">"performance"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="nt">"totalCalls"</span><span class="p">:</span><span class="w"> </span><span class="mi">45678</span><span class="p">,</span>
-<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="nt">"callsPerSecond"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.3</span><span class="p">,</span>
-<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="w">    </span><span class="nt">"categoryBreakdown"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"DATABASE"</span><span class="p">:</span><span class="w"> </span><span class="mi">1234</span><span class="w"> </span><span class="p">}</span>
-<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">  </span><span class="p">}</span>
-<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="p">}</span>
-</code></pre></div>
+<h2 id="example-response">Example response<a class="headerlink" href="#example-response" title="Permanent link">¶</a></h2>
+<p>```json path=null start=null
+{
+  "protocol": "rdcp/1.0",
+  "endpoints": {
+    "discovery": "/rdcp/v1/discovery",
+    "control": "/rdcp/v1/control",
+    "status": "/rdcp/v1/status",
+    "health": "/rdcp/v1/health"
+  },
+  "capabilities": {
+    "multiTenancy": true,
+    "performanceMetrics": true,
+    "temporaryControls": true,
+    "auditTrail": true
+  },
+  "security": {
+    "level": "standard",
+    "methods": ["api-key", "bearer"],
+    "scopes": ["discovery", "status", "control", "admin"],
+    "required": true,
+    "keyRotation": true,
+    "tokenRefresh": true
+  }
+}
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>## Validation
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>You can validate discovery responses using the JSON schema above with your preferred validator (e.g., AJV):
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a>```bash path=null start=null
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>npx ajv -s schema/v1/endpoints/protocol-discovery.json -d discovery.json --valid
+</code></pre></div></p>
 <aside class="md-source-file">
 <span class="md-source-file__fact">
 <span class="md-icon" title="Last update">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 2, 2025 18:16:10 UTC">October 2, 2025 18:16:10</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 3, 2025 18:16:27 UTC">October 3, 2025 18:16:27</span>
 </span>
 <span class="md-source-file__fact">
 <span class="md-icon" title="Created">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
 </span>
-<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 2, 2025 18:16:10 UTC">October 2, 2025 18:16:10</span>
+<span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime" title="October 3, 2025 18:16:27 UTC">October 3, 2025 18:16:27</span>
 </span>
 </aside>
 </article>
@@ -382,7 +427,7 @@
 </main>
 <footer class="md-footer">
 <nav aria-label="Footer" class="md-footer__inner md-grid">
-<a aria-label="Previous: Control Response" class="md-footer__link md-footer__link--prev" href="../control-response/">
+<a aria-label="Previous: Common Types" class="md-footer__link md-footer__link--prev" href="../../common/">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
 </div>
@@ -391,17 +436,17 @@
                 Previous
               </span>
 <div class="md-ellipsis">
-                Control Response
+                Common Types
               </div>
 </div>
 </a>
-<a aria-label="Next: Status Response" class="md-footer__link md-footer__link--next" href="../status-response/">
+<a aria-label="Next: Control Request" class="md-footer__link md-footer__link--next" href="../control-request/">
 <div class="md-footer__title">
 <span class="md-footer__direction">
                 Next
               </span>
 <div class="md-ellipsis">
-                Status Response
+                Control Request
               </div>
 </div>
 <div class="md-footer__button md-icon">
