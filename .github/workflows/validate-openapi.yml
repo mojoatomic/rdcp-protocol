@@ -1,24 +1,11 @@
 name: Validate OpenAPI
 
-on:
-  push:
-    paths:
-      - 'docs/api/**/*.json'
-      - '.github/workflows/validate-openapi.yml'
-  pull_request:
-    paths:
-      - 'docs/api/**/*.json'
-      - '.github/workflows/validate-openapi.yml'
+on: [push, pull_request]
 
 jobs:
-  validate:
+  lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Lint (Redocly)
-        run: |
-          npx --yes @redocly/cli@latest lint docs/api/v1/openapi.json
+      - uses: actions/checkout@v3
+      - name: Lint OpenAPI spec
+        run: npx @redocly/cli@latest lint docs/api/v1/openapi.json
