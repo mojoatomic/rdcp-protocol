@@ -51,6 +51,7 @@ All RDCP-compliant implementations must expose these endpoints:
 
 ## Documentation Structure
 
+- **[API Reference](/api/)** - Interactive OpenAPI (v1) with try-it examples
 - **[Protocol Specification](rdcp-protocol-specification.md)** - Complete technical specification
 - **[Implementation Guide](rdcp-implementation-guide.md)** - Step-by-step implementation instructions
 - **[Protocol Schemas](protocol-schemas.md)** - JSON schema definitions
