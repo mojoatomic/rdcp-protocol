@@ -1,0 +1,526 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Runtime Debug Control Protocol (RDCP)",
+    "version": "1.0.0",
+    "description": "A standardized HTTP-based protocol for controlling debug logging in distributed applications at runtime.",
+    "contact": {
+      "name": "RDCP Protocol",
+      "url": "https://github.com/mojoatomic/rdcp-protocol"
+    },
+    "license": {
+      "name": "Apache-2.0",
+      "url": "https://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://{hostname}",
+      "description": "RDCP-compliant server",
+      "variables": {
+        "hostname": {
+          "default": "localhost:3000",
+          "description": "Server hostname and port"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/.well-known/rdcp": {
+      "get": {
+        "summary": "Protocol Discovery",
+        "description": "Returns protocol version, available endpoints, capabilities, and security configuration",
+        "operationId": "getWellKnown",
+        "tags": ["Discovery"],
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Protocol information",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/WellKnownResponse" },
+                "example": {
+                  "protocol": "rdcp/1.0",
+                  "endpoints": {
+                    "discovery": "/rdcp/v1/discovery",
+                    "control": "/rdcp/v1/control",
+                    "status": "/rdcp/v1/status",
+                    "health": "/rdcp/v1/health"
+                  },
+                  "capabilities": {
+                    "multiTenancy": true,
+                    "performanceMetrics": true,
+                    "temporaryControls": true,
+                    "auditTrail": true
+                  },
+                  "security": {
+                    "level": "standard",
+                    "methods": ["api-key", "bearer"],
+                    "scopes": ["discovery", "status", "control", "admin"],
+                    "required": true,
+                    "keyRotation": true,
+                    "tokenRefresh": true
+                  }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" }
+        }
+      }
+    },
+    "/rdcp/v1/discovery": {
+      "get": {
+        "summary": "Debug System Discovery",
+        "description": "Lists available debug categories with their current state and metrics",
+        "operationId": "getDiscovery",
+        "tags": ["Discovery"],
+        "parameters": [
+          { "$ref": "#/components/parameters/TenantId" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Debug categories and system information",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DiscoveryResponse" },
+                "example": {
+                  "protocol": "rdcp/1.0",
+                  "timestamp": "2025-09-17T10:30:00.000Z",
+                  "categories": [
+                    {
+                      "name": "DATABASE",
+                      "description": "Database operations",
+                      "enabled": true,
+                      "temporary": false,
+                      "metrics": { "callsTotal": 1234, "callsPerSecond": 2.3 }
+                    },
+                    {
+                      "name": "API_ROUTES",
+                      "description": "API route handling",
+                      "enabled": false,
+                      "temporary": false,
+                      "metrics": { "callsTotal": 0, "callsPerSecond": 0 }
+                    }
+                  ],
+                  "performance": {
+                    "totalCalls": 45678,
+                    "callsPerSecond": 2.3,
+                    "categoryBreakdown": { "DATABASE": 1234 }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        },
+        "security": [ { "ApiKeyAuth": [] }, { "BearerAuth": [] } ]
+      }
+    },
+    "/rdcp/v1/control": {
+      "post": {
+        "summary": "Runtime Control",
+        "description": "Enable, disable, toggle, or reset debug categories",
+        "operationId": "postControl",
+        "tags": ["Control"],
+        "parameters": [
+          { "$ref": "#/components/parameters/TenantId" }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/ControlRequest" },
+              "examples": {
+                "enable": { "summary": "Enable category", "value": { "action": "enable", "categories": ["DATABASE"] } },
+                "temporary": {
+                  "summary": "Temporary enable with duration",
+                  "value": {
+                    "action": "enable",
+                    "categories": ["DATABASE", "API_ROUTES"],
+                    "options": { "temporary": true, "duration": "15m", "reason": "Investigating issue #1234" }
+                  }
+                },
+                "disable": { "summary": "Disable category", "value": { "action": "disable", "categories": ["DATABASE"] } }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Control operation result",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ControlResponse" },
+                "example": {
+                  "protocol": "rdcp/1.0",
+                  "timestamp": "2025-09-17T10:30:00.000Z",
+                  "action": "enable",
+                  "categories": ["DATABASE"],
+                  "status": "success",
+                  "message": "Enabled categories",
+                  "changes": [
+                    {
+                      "category": "DATABASE",
+                      "previousState": false,
+                      "newState": true,
+                      "temporary": true,
+                      "effectiveAt": "2025-09-17T10:30:00.000Z",
+                      "expiresAt": "2025-09-17T10:45:00.000Z"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        },
+        "security": [ { "ApiKeyAuth": [] }, { "BearerAuth": [] } ]
+      }
+    },
+    "/rdcp/v1/status": {
+      "get": {
+        "summary": "Current Status",
+        "description": "Returns current state of all debug categories",
+        "operationId": "getStatus",
+        "tags": ["Monitoring"],
+        "parameters": [
+          { "$ref": "#/components/parameters/TenantId" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Current debug status",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/StatusResponse" },
+                "example": {
+                  "protocol": "rdcp/1.0",
+                  "timestamp": "2025-09-17T10:30:00.000Z",
+                  "enabled": true,
+                  "categories": { "DATABASE": true, "API_ROUTES": false, "CACHE": false },
+                  "performance": { "totalCalls": 45678, "callsPerSecond": 2.3 }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" }
+        },
+        "security": [ { "ApiKeyAuth": [] }, { "BearerAuth": [] } ]
+      }
+    },
+    "/rdcp/v1/health": {
+      "get": {
+        "summary": "System Health",
+        "description": "Returns system health status and dependency checks",
+        "operationId": "getHealth",
+        "tags": ["Monitoring"],
+        "responses": {
+          "200": {
+            "description": "System health information",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HealthResponse" },
+                "example": {
+                  "protocol": "rdcp/1.0",
+                  "timestamp": "2025-09-17T10:30:00.000Z",
+                  "status": "healthy",
+                  "checks": [
+                    { "name": "redis", "status": "pass", "duration": "5ms" },
+                    { "name": "database", "status": "pass", "duration": "8ms" }
+                  ]
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/BadRequest" },
+          "503": {
+            "description": "Service unavailable",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HealthResponse" },
+                "example": {
+                  "protocol": "rdcp/1.0",
+                  "timestamp": "2025-09-17T10:30:00.000Z",
+                  "status": "unhealthy",
+                  "checks": [ { "name": "redis", "status": "fail", "duration": "5000ms" } ]
+                }
+              }
+            }
+          }
+        },
+        "security": [ { "ApiKeyAuth": [] }, { "BearerAuth": [] } ]
+      }
+    },
+    "/rdcp/v1/metrics": {
+      "get": {
+        "summary": "Performance Metrics",
+        "description": "Optional endpoint for detailed performance metrics",
+        "operationId": "getMetrics",
+        "tags": ["Monitoring"],
+        "parameters": [
+          { "$ref": "#/components/parameters/TenantId" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Performance metrics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "protocol": { "type": "string", "example": "rdcp/1.0" },
+                    "timestamp": { "type": "string", "format": "date-time" },
+                    "metrics": { "type": "object" }
+                  }
+                }
+              }
+            }
+          },
+          "401": { "$ref": "#/components/responses/Unauthorized" },
+          "403": { "$ref": "#/components/responses/Forbidden" },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        },
+        "security": [ { "ApiKeyAuth": [] }, { "BearerAuth": [] } ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": { "type": "apiKey", "in": "header", "name": "X-RDCP-API-Key", "description": "API key for basic authentication. Format: rdcp_[env]_[type]_[random]" },
+      "BearerAuth": { "type": "http", "scheme": "bearer", "bearerFormat": "JWT", "description": "Bearer token (JWT) for standard authentication" }
+    },
+    "schemas": {
+      "WellKnownResponse": {
+        "type": "object",
+        "required": ["protocol", "endpoints", "capabilities", "security"],
+        "properties": {
+          "protocol": { "type": "string", "example": "rdcp/1.0", "description": "Protocol version" },
+          "endpoints": {
+            "type": "object",
+            "required": ["discovery", "control", "status", "health"],
+            "properties": {
+              "discovery": { "type": "string", "example": "/rdcp/v1/discovery" },
+              "control": { "type": "string", "example": "/rdcp/v1/control" },
+              "status": { "type": "string", "example": "/rdcp/v1/status" },
+              "health": { "type": "string", "example": "/rdcp/v1/health" }
+            }
+          },
+          "capabilities": {
+            "type": "object",
+            "required": ["multiTenancy", "performanceMetrics", "temporaryControls", "auditTrail"],
+            "properties": {
+              "multiTenancy": { "type": "boolean" },
+              "performanceMetrics": { "type": "boolean" },
+              "temporaryControls": { "type": "boolean" },
+              "auditTrail": { "type": "boolean" }
+            }
+          },
+          "security": {
+            "type": "object",
+            "required": ["level", "methods", "scopes", "required"],
+            "properties": {
+              "level": { "type": "string", "enum": ["basic", "standard", "enterprise"] },
+              "methods": { "type": "array", "items": { "type": "string", "enum": ["api-key", "bearer", "mtls"] } },
+              "scopes": { "type": "array", "items": { "type": "string", "enum": ["discovery", "status", "control", "admin"] } },
+              "required": { "type": "boolean" },
+              "keyRotation": { "type": "boolean" },
+              "tokenRefresh": { "type": "boolean" }
+            }
+          }
+        }
+      },
+      "DiscoveryResponse": {
+        "type": "object",
+        "required": ["protocol", "timestamp", "categories"],
+        "properties": {
+          "protocol": { "type": "string", "example": "rdcp/1.0" },
+          "timestamp": { "type": "string", "format": "date-time", "description": "ISO 8601 timestamp with milliseconds and UTC timezone", "example": "2025-09-17T10:30:00.000Z" },
+          "categories": { "type": "array", "items": { "$ref": "#/components/schemas/Category" } },
+          "performance": { "$ref": "#/components/schemas/Performance" },
+          "tenant": { "$ref": "#/components/schemas/TenantContext" }
+        }
+      },
+      "Category": {
+        "type": "object",
+        "required": ["name", "description", "enabled"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]{0,63}$", "description": "Category name in uppercase with underscores", "example": "DATABASE" },
+          "description": { "type": "string", "example": "Database operations" },
+          "enabled": { "type": "boolean" },
+          "temporary": { "type": "boolean" },
+          "metrics": { "type": "object", "properties": { "callsTotal": { "type": "number" }, "callsPerSecond": { "type": "number" } } }
+        }
+      },
+      "Performance": {
+        "type": "object",
+        "properties": {
+          "totalCalls": { "type": "number" },
+          "callsPerSecond": { "type": "number" },
+          "categoryBreakdown": { "type": "object", "additionalProperties": { "type": "number" } }
+        }
+      },
+      "ControlRequest": {
+        "type": "object",
+        "required": ["action", "categories"],
+        "properties": {
+          "action": { "type": "string", "enum": ["enable", "disable", "toggle", "reset", "status"], "description": "Control action to perform" },
+          "categories": { "type": "array", "items": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]{0,63}$" }, "minItems": 1, "uniqueItems": true, "description": "List of category names to control" },
+          "options": {
+            "type": "object",
+            "properties": {
+              "temporary": { "type": "boolean", "description": "Whether the change is temporary" },
+              "duration": { "oneOf": [ { "type": "number", "description": "Duration in seconds" }, { "type": "string", "pattern": "^\\d+[smhd]$", "description": "Duration string (e.g., '15m', '2h')" } ] },
+              "reason": { "type": "string", "description": "Reason for the change (audit trail)" }
+            }
+          }
+        }
+      },
+      "ControlResponse": {
+        "type": "object",
+        "required": ["protocol", "timestamp", "action", "categories", "status"],
+        "properties": {
+          "protocol": { "type": "string", "example": "rdcp/1.0" },
+          "timestamp": { "type": "string", "format": "date-time", "example": "2025-09-17T10:30:00.000Z" },
+          "action": { "type": "string", "enum": ["enable", "disable", "toggle", "reset", "status"] },
+          "categories": { "type": "array", "items": { "type": "string" } },
+          "status": { "type": "string", "enum": ["success", "partial", "failed"] },
+          "message": { "type": "string" },
+          "changes": { "type": "array", "items": { "$ref": "#/components/schemas/Change" } },
+          "tenant": { "$ref": "#/components/schemas/TenantContext" }
+        }
+      },
+      "Change": {
+        "type": "object",
+        "required": ["category", "previousState", "newState"],
+        "properties": {
+          "category": { "type": "string" },
+          "previousState": { "type": "boolean" },
+          "newState": { "type": "boolean" },
+          "temporary": { "type": "boolean" },
+          "effectiveAt": { "type": "string", "format": "date-time" },
+          "expiresAt": { "type": "string", "format": "date-time" }
+        }
+      },
+      "StatusResponse": {
+        "type": "object",
+        "required": ["protocol", "timestamp", "enabled", "categories"],
+        "properties": {
+          "protocol": { "type": "string", "example": "rdcp/1.0" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "enabled": { "type": "boolean", "description": "Whether any debug category is enabled" },
+          "categories": { "type": "object", "additionalProperties": { "type": "boolean" }, "description": "Map of category names to enabled state" },
+          "performance": { "$ref": "#/components/schemas/Performance" },
+          "tenant": { "$ref": "#/components/schemas/TenantContext" }
+        }
+      },
+      "HealthResponse": {
+        "type": "object",
+        "required": ["protocol", "timestamp", "status", "checks"],
+        "properties": {
+          "protocol": { "type": "string", "example": "rdcp/1.0" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "status": { "type": "string", "enum": ["healthy", "degraded", "unhealthy"] },
+          "checks": { "type": "array", "items": { "$ref": "#/components/schemas/HealthCheck" } }
+        }
+      },
+      "HealthCheck": {
+        "type": "object",
+        "required": ["name", "status"],
+        "properties": {
+          "name": { "type": "string", "example": "redis" },
+          "status": { "type": "string", "enum": ["pass", "fail", "warn"] },
+          "duration": { "type": "string", "description": "Duration of the health check", "example": "5ms" }
+        }
+      },
+      "TenantContext": {
+        "type": "object",
+        "required": ["id", "isolationLevel", "scope"],
+        "properties": {
+          "id": { "type": "string", "description": "Tenant identifier" },
+          "isolationLevel": { "type": "string", "enum": ["global", "process", "namespace", "organization"] },
+          "scope": { "type": "string", "enum": ["global", "tenant-isolated"] }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": ["code", "message", "protocol"],
+            "properties": {
+              "code": { "type": "string", "pattern": "^[A-Z0-9_]{3,64}$", "example": "UNAUTHORIZED" },
+              "message": { "type": "string", "example": "Authentication required" },
+              "details": { "type": "object", "description": "Additional error context" },
+              "protocol": { "type": "string", "example": "rdcp/1.0" }
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "BadRequest": {
+        "description": "Bad request - invalid input",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+            "example": { "error": { "code": "INVALID_REQUEST", "message": "Invalid category name", "protocol": "rdcp/1.0" } }
+          }
+        }
+      },
+      "Unauthorized": {
+        "description": "Authentication required",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+            "example": { "error": { "code": "UNAUTHORIZED", "message": "Authentication required", "protocol": "rdcp/1.0" } }
+          }
+        }
+      },
+      "Forbidden": {
+        "description": "Insufficient permissions",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+            "example": {
+              "error": {
+                "code": "FORBIDDEN",
+                "message": "Insufficient permissions",
+                "details": { "requiredScopes": ["control"], "providedScopes": ["status"] },
+                "protocol": "rdcp/1.0"
+              }
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "Resource not found",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+            "example": { "error": { "code": "CATEGORY_NOT_FOUND", "message": "Category not found", "protocol": "rdcp/1.0" } }
+          }
+        }
+      }
+    },
+    "parameters": {
+      "TenantId": {
+        "name": "X-RDCP-Tenant-ID",
+        "in": "header",
+        "description": "Tenant identifier for multi-tenant deployments",
+        "required": false,
+        "schema": { "type": "string", "pattern": "^[a-zA-Z0-9._-]{1,255}$" }
+      }
+    }
+  },
+  "tags": [
+    { "name": "Discovery", "description": "Protocol and system discovery endpoints" },
+    { "name": "Control", "description": "Runtime debug control operations" },
+    { "name": "Monitoring", "description": "Status and health monitoring endpoints" }
+  ]
+}
