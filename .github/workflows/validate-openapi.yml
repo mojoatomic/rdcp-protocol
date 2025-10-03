@@ -21,8 +21,12 @@ jobs:
 
       - name: Validate (swagger-cli)
         run: |
-          npx --yes @apidevtools/swagger-cli@5.1.0 validate docs/api/v1/openapi.json
+          npx --yes @apidevtools/swagger-cli@4.0.4 validate docs/api/v1/openapi.json
 
       - name: Lint (Redocly)
         run: |
           npx --yes @redocly/cli@latest lint docs/api/v1/openapi.json
+
+      - name: Lint (Spectral)
+        run: |
+          npx --yes @stoplight/spectral-cli@6.11.1 lint docs/api/v1/openapi.json
