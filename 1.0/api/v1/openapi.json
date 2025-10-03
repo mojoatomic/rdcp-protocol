@@ -37,6 +37,16 @@
             "lang": "bash",
             "label": "curl",
             "source": "curl -fsS -H 'Accept: application/json' 'https://{hostname}/.well-known/rdcp'"
+          },
+          {
+            "lang": "python",
+            "label": "requests",
+            "source": "import requests\nurl = 'https://{hostname}/.well-known/rdcp'\nresp = requests.get(url, headers={'Accept':'application/json'})\nprint(resp.json())"
+          },
+          {
+            "lang": "go",
+            "label": "net/http",
+            "source": "package main\nimport (\n  \"fmt\"\n  \"net/http\"\n  \"io/ioutil\"\n)\nfunc main(){\n  req, _ := http.NewRequest(\"GET\", \"https://{hostname}/.well-known/rdcp\", nil)\n  req.Header.Set(\"Accept\", \"application/json\")\n  resp, _ := http.DefaultClient.Do(req)\n  defer resp.Body.Close()\n  b, _ := ioutil.ReadAll(resp.Body)\n  fmt.Println(string(b))\n}"
           }
         ],
         "security": [],
@@ -90,6 +100,16 @@
             "lang": "bash",
             "label": "curl",
             "source": "curl -fsS -H 'Accept: application/json' -H 'X-RDCP-Tenant-ID: TENANT_ID' 'https://{hostname}/rdcp/v1/discovery'"
+          },
+          {
+            "lang": "python",
+            "label": "requests",
+            "source": "import requests\nurl = 'https://{hostname}/rdcp/v1/discovery'\nheaders = {'Accept':'application/json','X-RDCP-Tenant-ID':'TENANT_ID'}\nresp = requests.get(url, headers=headers)\nprint(resp.json())"
+          },
+          {
+            "lang": "go",
+            "label": "net/http",
+            "source": "package main\nimport (\n  \"fmt\"\n  \"net/http\"\n  \"io/ioutil\"\n)\nfunc main(){\n  req, _ := http.NewRequest(\"GET\", \"https://{hostname}/rdcp/v1/discovery\", nil)\n  req.Header.Set(\"Accept\", \"application/json\")\n  req.Header.Set(\"X-RDCP-Tenant-ID\", \"TENANT_ID\")\n  resp, _ := http.DefaultClient.Do(req)\n  defer resp.Body.Close()\n  b, _ := ioutil.ReadAll(resp.Body)\n  fmt.Println(string(b))\n}"
           }
         ],
         "responses": {
@@ -146,6 +166,16 @@
             "lang": "bash",
             "label": "curl",
             "source": "curl -fsS -X POST 'https://{hostname}/rdcp/v1/control' -H 'Content-Type: application/json' -H 'X-RDCP-Tenant-ID: TENANT_ID' --data '{\"action\":\"enable\",\"categories\":[\"DATABASE\"]}'"
+          },
+          {
+            "lang": "python",
+            "label": "requests",
+            "source": "import requests\nurl = 'https://{hostname}/rdcp/v1/control'\npayload = { 'action':'enable', 'categories':['DATABASE'] }\nheaders = {'Content-Type':'application/json','X-RDCP-Tenant-ID':'TENANT_ID'}\nresp = requests.post(url, json=payload, headers=headers)\nprint(resp.json())"
+          },
+          {
+            "lang": "go",
+            "label": "net/http",
+            "source": "package main\nimport (\n  \"bytes\"\n  \"fmt\"\n  \"net/http\"\n  \"io/ioutil\"\n)\nfunc main(){\n  body := bytes.NewBufferString(`{\"action\":\"enable\",\"categories\":[\"DATABASE\"]}`)\n  req, _ := http.NewRequest(\"POST\", \"https://{hostname}/rdcp/v1/control\", body)\n  req.Header.Set(\"Content-Type\", \"application/json\")\n  req.Header.Set(\"X-RDCP-Tenant-ID\", \"TENANT_ID\")\n  resp, _ := http.DefaultClient.Do(req)\n  defer resp.Body.Close()\n  b, _ := ioutil.ReadAll(resp.Body)\n  fmt.Println(string(b))\n}"
           }
         ],
         "requestBody": {
@@ -217,6 +247,16 @@
             "lang": "bash",
             "label": "curl",
             "source": "curl -fsS -H 'Accept: application/json' -H 'X-RDCP-Tenant-ID: TENANT_ID' 'https://{hostname}/rdcp/v1/status'"
+          },
+          {
+            "lang": "python",
+            "label": "requests",
+            "source": "import requests\nurl = 'https://{hostname}/rdcp/v1/status'\nheaders = {'Accept':'application/json','X-RDCP-Tenant-ID':'TENANT_ID'}\nresp = requests.get(url, headers=headers)\nprint(resp.json())"
+          },
+          {
+            "lang": "go",
+            "label": "net/http",
+            "source": "package main\nimport (\n  \"fmt\"\n  \"net/http\"\n  \"io/ioutil\"\n)\nfunc main(){\n  req, _ := http.NewRequest(\"GET\", \"https://{hostname}/rdcp/v1/status\", nil)\n  req.Header.Set(\"Accept\", \"application/json\")\n  req.Header.Set(\"X-RDCP-Tenant-ID\", \"TENANT_ID\")\n  resp, _ := http.DefaultClient.Do(req)\n  defer resp.Body.Close()\n  b, _ := ioutil.ReadAll(resp.Body)\n  fmt.Println(string(b))\n}"
           }
         ],
         "responses": {
@@ -252,6 +292,16 @@
             "lang": "bash",
             "label": "curl",
             "source": "curl -fsS -H 'Accept: application/json' 'https://{hostname}/rdcp/v1/health'"
+          },
+          {
+            "lang": "python",
+            "label": "requests",
+            "source": "import requests\nurl = 'https://{hostname}/rdcp/v1/health'\nresp = requests.get(url, headers={'Accept':'application/json'})\nprint(resp.json())"
+          },
+          {
+            "lang": "go",
+            "label": "net/http",
+            "source": "package main\nimport (\n  \"fmt\"\n  \"net/http\"\n  \"io/ioutil\"\n)\nfunc main(){\n  req, _ := http.NewRequest(\"GET\", \"https://{hostname}/rdcp/v1/health\", nil)\n  req.Header.Set(\"Accept\", \"application/json\")\n  resp, _ := http.DefaultClient.Do(req)\n  defer resp.Body.Close()\n  b, _ := ioutil.ReadAll(resp.Body)\n  fmt.Println(string(b))\n}"
           }
         ],
         "responses": {
@@ -305,6 +355,16 @@
             "lang": "bash",
             "label": "curl",
             "source": "curl -fsS -H 'Accept: application/json' -H 'X-RDCP-Tenant-ID: TENANT_ID' 'https://{hostname}/rdcp/v1/metrics'"
+          },
+          {
+            "lang": "python",
+            "label": "requests",
+            "source": "import requests\nurl = 'https://{hostname}/rdcp/v1/metrics'\nheaders = {'Accept':'application/json','X-RDCP-Tenant-ID':'TENANT_ID'}\nresp = requests.get(url, headers=headers)\nprint(resp.json())"
+          },
+          {
+            "lang": "go",
+            "label": "net/http",
+            "source": "package main\nimport (\n  \"fmt\"\n  \"net/http\"\n  \"io/ioutil\"\n)\nfunc main(){\n  req, _ := http.NewRequest(\"GET\", \"https://{hostname}/rdcp/v1/metrics\", nil)\n  req.Header.Set(\"Accept\", \"application/json\")\n  req.Header.Set(\"X-RDCP-Tenant-ID\", \"TENANT_ID\")\n  resp, _ := http.DefaultClient.Do(req)\n  defer resp.Body.Close()\n  b, _ := ioutil.ReadAll(resp.Body)\n  fmt.Println(string(b))\n}"
           }
         ],
         "responses": {
