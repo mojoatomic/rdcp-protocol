@@ -37,12 +37,28 @@ curl -fsS -H 'Accept: application/json' -H "X-RDCP-API-Key: ${RDCP_API_KEY}" \
 Behavior sequence: enable‑and‑verify
 - See sequences/enable-and-verify.json for the two calls and expected outcome (DATABASE=true in status).
 
-Validating fixtures (CI or local)
-- This repo includes a workflow to validate fixtures against schemas.
-- Locally, run:
+## Running Validation Locally
 ```bash
+# Install dependencies
+npm install
+
+# Validate all fixtures
 node scripts/validate-fixtures.js
 ```
+If validation fails, check:
+- Fixture conforms to schema structure
+- Error codes match defined values in error-codes.md
+- Field names match exactly (e.g., callsTotal not totalCalls)
+
+**Skip:**
+- Detailed AJV configuration docs (implementation detail)
+- JSON linting workflow (nice-to-have, not essential)
+- Heavy CONTRIBUTING guide (you don't have external contributors yet)
+
+**The compliance kit needs:**
+- README with "how to use" (curl examples, validation)
+- MANIFEST.json explaining test expectations
+- Clear fixture organization
 
 Notes
 - Fixtures are examples; server responses may include additional fields. Conformance focuses on status codes and required fields/shapes.

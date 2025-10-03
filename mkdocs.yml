@@ -92,5 +92,9 @@ nav:
     - Reference: api/reference.md
     - Playground: api/playground.md
   - Error Codes: error-codes.md
-  - Compliance Kit: compliance-kit.md
+  - Compliance Kit:
+    - Overview: compliance-kit/v1.0/README.md
+    - Test Manifest: compliance-kit/v1.0/MANIFEST.md
+    - Assertions: compliance-kit/v1.0/assertions.md
+    - Running Tests: compliance-kit/v1.0/running-tests.md
   - Compliance Report: PROTOCOL-COMPLIANCE-REPORT.md
