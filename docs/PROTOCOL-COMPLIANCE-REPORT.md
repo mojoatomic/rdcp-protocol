@@ -173,7 +173,7 @@ Per Section 7 of the RDCP Protocol Specification:
 
 ### Current Level: Level 2 (Standard)
 
-Per Section 11 of the RDCP Protocol Specification:
+Per Section 12 of the RDCP Protocol Specification:
 
 #### Level 1: Basic (Met)
 - Implements all required endpoints
