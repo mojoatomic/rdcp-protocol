@@ -1,2 +1,5 @@
 site/
 .venv/
+
+# Never track local agent rules
+WARP.md
