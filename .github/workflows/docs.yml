@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: docs-${{ github.ref }}
@@ -63,8 +64,7 @@ jobs:
 
       - name: Prepare /api redirect in gh-pages tree
         run: |
-          git fetch origin gh-pages:gh-pages
-          git checkout gh-pages
+          git checkout gh-pages || git checkout -b gh-pages
           mkdir -p api
           cat > api/index.html <<'REDIR'
           <!doctype html>
