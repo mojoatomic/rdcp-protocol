@@ -1,5 +1,3 @@
 # API Reference
 
-```redoc
-spec-url: ./v1/openapi.json
-```
+<redoc spec-url="./v1/openapi.json"></redoc>
