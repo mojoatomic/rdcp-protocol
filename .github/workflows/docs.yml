@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 concurrency:
   group: docs-${{ github.ref }}
@@ -56,15 +57,14 @@ jobs:
           pip install mkdocs-redoc-tag
           pip install mkdocs-swagger-ui-tag
           pip install mike
-      - name: Deploy with versioning
+      - name: Build versioned site with mike (no direct push)
         run: |
-          mike deploy --push --update-aliases 1.0 latest
-          mike set-default --push latest
+          mike deploy --update-aliases 1.0 latest
+          mike set-default latest
 
-      - name: Add /api redirect to /latest/api/
+      - name: Prepare /api redirect in gh-pages tree
         run: |
-          git fetch origin gh-pages:gh-pages
-          git checkout gh-pages
+          git checkout gh-pages || git checkout -b gh-pages
           mkdir -p api
           cat > api/index.html <<'REDIR'
           <!doctype html>
@@ -79,4 +79,13 @@ jobs:
           REDIR
           git add api/index.html
           git commit -m 'chore(pages): add /api redirect to /latest/api/' || true
-          git push origin gh-pages
+
+      - name: Push pages update branch and open PR to gh-pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          BR="pages/update-${GITHUB_SHA:0:7}-${GITHUB_RUN_ID}"
+          git push origin HEAD:"$BR"
+          gh pr create -R "${GITHUB_REPOSITORY}" --base gh-pages --head "$BR" \
+            --title "docs(pages): publish site update" \
+            --body "Automated pages deploy via PR. Includes mike versioning update and redirect."
