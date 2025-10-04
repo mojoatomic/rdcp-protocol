@@ -62,24 +62,7 @@ jobs:
           mike deploy --update-aliases 1.0 latest
           mike set-default latest
 
-      - name: Prepare /api redirect in gh-pages tree
-        run: |
-          git checkout gh-pages || git checkout -b gh-pages
-          mkdir -p api
-          cat > api/index.html <<'REDIR'
-          <!doctype html>
-          <html>
-            <head>
-              <meta http-equiv="refresh" content="0; url=../latest/api/" />
-              <link rel="canonical" href="../latest/api/" />
-              <meta name="robots" content="noindex" />
-            </head>
-            <body>Redirecting to latest API docs…</body>
-          </html>
-          REDIR
-          git add api/index.html
-          git commit -m 'chore(pages): add /api redirect to /latest/api/' || true
 
-      - name: Push pages to gh-pages (force)
+      - name: Push gh-pages (force)
         run: |
-          git push origin HEAD:gh-pages --force
+          git push origin gh-pages --force
