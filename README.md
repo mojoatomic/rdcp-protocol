@@ -3,6 +3,7 @@
 Authoritative documentation:
 - Stable (v1.0): https://mojoatomic.github.io/rdcp-protocol/1.0/
 - Latest: https://mojoatomic.github.io/rdcp-protocol/latest/
+- Wiki - https://mojoatomic.github.io/rdcp-protocol/latest/
 
 This repository contains the protocol specification, versioned JSON Schemas, and the published documentation site built with MkDocs + mike.
 
