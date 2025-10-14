@@ -2,94 +2,94 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/PROTOCOL-COMPLIANCE-REPORT/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/compliance-kit/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/error-codes/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/protocol-schemas/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/rdcp-implementation-guide/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/rdcp-protocol-specification/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/api/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/api/playground/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/api/reference/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/compliance-kit/v1.0/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/compliance-kit/v1.0/MANIFEST/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/compliance-kit/v1.0/assertions/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/compliance-kit/v1.0/running-tests/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/common/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/control-request/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/control-response/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/discovery-response/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/health-response/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/protocol-discovery/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/endpoints/status-response/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
     <url>
          <loc>https://mojoatomic.github.io/rdcp-protocol/1.0/schemas/responses/error/</loc>
-         <lastmod>2025-10-04</lastmod>
+         <lastmod>2025-10-14</lastmod>
     </url>
 </urlset>
