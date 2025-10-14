@@ -1,0 +1,224 @@
+
+
+
+
+Network Working Group                                          T. Author
+Internet-Draft                                                MojoAtomic
+Intended status: Experimental                             3 October 2025
+Expires: 6 April 2026
+
+
+               Runtime Debug Control Protocol (RDCP) v1.0
+                             draft-rdcp-00
+
+Abstract
+
+   Abstract TBD.  See rfc-submission/missing-sections.md for the current
+   draft.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 6 April 2026.
+
+Copyright Notice
+
+   Copyright (c) 2025 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+
+
+
+
+
+
+Author                    Expires 6 April 2026                  [Page 1]
+
+Internet-Draft                  RDCP v1.0                   October 2025
+
+
+Table of Contents
+
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
+   2.  Protocol Architecture . . . . . . . . . . . . . . . . . . . .   2
+   3.  Authentication and Authorization  . . . . . . . . . . . . . .   2
+   4.  Multi-Tenancy . . . . . . . . . . . . . . . . . . . . . . . .   2
+   5.  Endpoints . . . . . . . . . . . . . . . . . . . . . . . . . .   2
+     5.1.  Discovery . . . . . . . . . . . . . . . . . . . . . . . .   2
+     5.2.  Control . . . . . . . . . . . . . . . . . . . . . . . . .   2
+     5.3.  Status  . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     5.4.  Health  . . . . . . . . . . . . . . . . . . . . . . . . .   3
+     5.5.  Metrics (optional)  . . . . . . . . . . . . . . . . . . .   3
+   6.  Error Handling  . . . . . . . . . . . . . . . . . . . . . . .   3
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .   3
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
+   9.  Compliance Levels . . . . . . . . . . . . . . . . . . . . . .   3
+   10. Normative References  . . . . . . . . . . . . . . . . . . . .   3
+   11. Informative References  . . . . . . . . . . . . . . . . . . .   4
+   Appendix A.  Examples . . . . . . . . . . . . . . . . . . . . . .   4
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
+
+1.  Introduction
+
+   Overview and motivation for RDCP.
+
+2.  Protocol Architecture
+
+   Transports, endpoints, and actors.
+
+3.  Authentication and Authorization
+
+   Security levels, headers, scopes.
+
+4.  Multi-Tenancy
+
+   Tenant headers and isolation levels.
+
+5.  Endpoints
+
+5.1.  Discovery
+
+   Discovery endpoint specification.
+
+5.2.  Control
+
+   Control endpoint specification.
+
+
+
+
+
+Author                    Expires 6 April 2026                  [Page 2]
+
+Internet-Draft                  RDCP v1.0                   October 2025
+
+
+5.3.  Status
+
+   Status endpoint specification.
+
+5.4.  Health
+
+   Health endpoint specification.
+
+5.5.  Metrics (optional)
+
+   Metrics endpoint (if standardized).
+
+6.  Error Handling
+
+   Error model and codes.
+
+7.  Security Considerations
+
+   See rfc-submission/missing-sections.md for the expanded outline.
+
+8.  IANA Considerations
+
+   See rfc-submission/missing-sections.md for planned registries.
+
+9.  Compliance Levels
+
+   Compliance levels and requirements.
+
+10.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+   [RFC8259]  Bray, T., Ed., "The JavaScript Object Notation (JSON) Data
+              Interchange Format", STD 90, RFC 8259,
+              DOI 10.17487/RFC8259, December 2017,
+              <https://www.rfc-editor.org/info/rfc8259>.
+
+   [RFC8446]  Rescorla, E., "The Transport Layer Security (TLS) Protocol
+              Version 1.3", RFC 8446, DOI 10.17487/RFC8446, August 2018,
+              <https://www.rfc-editor.org/info/rfc8446>.
+
+
+
+
+Author                    Expires 6 April 2026                  [Page 3]
+
+Internet-Draft                  RDCP v1.0                   October 2025
+
+
+   [RFC8615]  Nottingham, M., "Well-Known Uniform Resource Identifiers
+              (URIs)", RFC 8615, DOI 10.17487/RFC8615, May 2019,
+              <https://www.rfc-editor.org/info/rfc8615>.
+
+   [RFC3339]  Klyne, G. and C. Newman, "Date and Time on the Internet:
+              Timestamps", RFC 3339, DOI 10.17487/RFC3339, July 2002,
+              <https://www.rfc-editor.org/info/rfc3339>.
+
+   [RFC9110]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "HTTP Semantics", STD 97, RFC 9110,
+              DOI 10.17487/RFC9110, June 2022,
+              <https://www.rfc-editor.org/info/rfc9110>.
+
+   [RFC9112]  Fielding, R., Ed., Nottingham, M., Ed., and J. Reschke,
+              Ed., "HTTP/1.1", STD 99, RFC 9112, DOI 10.17487/RFC9112,
+              June 2022, <https://www.rfc-editor.org/info/rfc9112>.
+
+11.  Informative References
+
+   [RFC7807]  Nottingham, M. and E. Wilde, "Problem Details for HTTP
+              APIs", RFC 7807, DOI 10.17487/RFC7807, March 2016,
+              <https://www.rfc-editor.org/info/rfc7807>.
+
+   [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
+              (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
+              <https://www.rfc-editor.org/info/rfc7519>.
+
+   [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
+              RFC 6749, DOI 10.17487/RFC6749, October 2012,
+              <https://www.rfc-editor.org/info/rfc6749>.
+
+Appendix A.  Examples
+
+   Example requests/responses (to be expanded).
+
+Author's Address
+
+   TBD Author
+   MojoAtomic
+   Email: TBD@example.com
+
+
+
+
+
+
+
+
+
+
+
+Author                    Expires 6 April 2026                  [Page 4]
